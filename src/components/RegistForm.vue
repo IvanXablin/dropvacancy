@@ -7,25 +7,25 @@ const input = ref('')
   <div class="regist-form">
     <el-input
         v-model="input"
-        placeholder="Ваше имя..."
+        placeholder="Ваше имя"
     />
     <el-input
         v-model="input"
-        placeholder="Ваша почта..."
+        placeholder="Ваша почта"
     />
     <el-input
         v-model="input"
         type="password"
-        placeholder="Пароль..."
+        placeholder="Пароль"
         show-password
     />
     <el-input
         v-model="input"
         type="password"
-        placeholder="Повторите пароль..."
+        placeholder="Повторите пароль"
         show-password
     />
-    <el-button type="primary" round>Отправить</el-button>
+    <el-button type="primary" round>Зарегистрироваться</el-button>
   </div>
 </template>
 

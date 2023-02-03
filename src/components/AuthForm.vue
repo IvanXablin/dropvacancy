@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+
 const input = ref('')
 </script>
 
@@ -8,15 +9,16 @@ const input = ref('')
     <div class="auth-form__content">
       <el-input
           v-model="input"
-          placeholder="Почта..."
+          placeholder="Почта"
       />
       <el-input
           v-model="input"
           type="password"
-          placeholder="Пароль..."
+          placeholder="Пароль"
           show-password
       />
       <el-button type="primary" round>Войти</el-button>
+      <el-button type="danger" round>Войти через hh.ru</el-button>
     </div>
   </div>
 </template>
@@ -27,14 +29,14 @@ const input = ref('')
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 70%;
+  height: 90%;
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    height: 70%
+    height: 75%;
   }
 }
 </style>

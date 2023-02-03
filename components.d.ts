@@ -9,7 +9,11 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AuthForm: typeof import('./src/components/AuthForm.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCol: typeof import('element-plus/es')['ElCol']
+    ElDrawer: typeof import('element-plus/es')['ElDrawer']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
+    ElRow: typeof import('element-plus/es')['ElRow']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     FooterComponent: typeof import('./src/components/FooterComponent.vue')['default']

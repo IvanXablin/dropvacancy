@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import RegistForm from '@/components/RegistForm.vue'
 import AuthForm from '@/components/AuthForm.vue'
-
 import { ref } from 'vue'
 
-const activeName = ref('first');
-
+const activeName = ref('first')
 </script>
 
 <template>
@@ -16,7 +14,7 @@ const activeName = ref('first');
           <regist-form/>
         </el-tab-pane>
         <el-tab-pane label="Авторизация" name="second">
-          <auth-form></auth-form>
+          <auth-form/>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -36,11 +34,6 @@ const activeName = ref('first');
     background: rgba(26, 97, 135, 0.3);
     border-radius: 20px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
-  }
-
-  p {
-    font-size: 30px;
-    font-weight: bold;
   }
 }
 </style>
