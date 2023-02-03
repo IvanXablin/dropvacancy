@@ -1,11 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
- <el-button>Hello World</el-button>
+<router-view/>
 </template>
-
-<style lang="scss" scoped>
-
-</style>
