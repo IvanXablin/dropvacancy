@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     ElInput: typeof import('element-plus/es')['ElInput']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
+    FooterComponent: typeof import('./src/components/FooterComponent.vue')['default']
     HeaderComponent: typeof import('./src/components/HeaderComponent.vue')['default']
     RegistForm: typeof import('./src/components/RegistForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
