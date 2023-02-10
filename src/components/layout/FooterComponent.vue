@@ -2,7 +2,7 @@
 <div class="footer">
   <p class="footer__warning">© Dropvacancy 2023. Все права защищены</p>
   <a target="_blank" href="https://github.com/IvanXablin/dropvacancy-client">
-    <img class="footer__logo" src="../assets/images/github-mark-white.svg" alt="" />
+    <img class="footer__logo" src="../../assets/images/github-mark-white.svg" alt="" />
   </a>
 </div>
 </template>
