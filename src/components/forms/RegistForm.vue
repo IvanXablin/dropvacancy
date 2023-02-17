@@ -1,28 +1,35 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { TUser }  from "@/types/TUser";
-import axios from "axios";
+import { useRouter } from "vue-router";
+import {authApi} from "@/api/auth.api";
 
 const nameInput = ref('');
 const emailInput = ref('');
 const passwordInput = ref('');
 const confirmPasswordInput = ref('');
 
-const handleRegist = async ():Promise<void> => {
+const router = useRouter();
+
+const handleRegister = async ():Promise<void> => {
 
   if (passwordInput.value !== confirmPasswordInput.value) return;
 
-  const user: TUser = {
+  const user:TUser = {
     name: nameInput.value,
     email: emailInput.value,
     password: passwordInput.value,
   };
 
-  try {
-    const response = await axios.post('http://localhost:3000/auth/register', user);
-    console.log(response.data)
+  const [error, response] = await authApi.register(user);
+
+  if (error) {
+    alert("Произошла ошибка, попробуйте зарегистрироваться еще раз");
+    return;
   }
-  catch (error: unknown) { /* empty */ }
+  if (response) {
+    await router.push({ path: '/account' })
+  }
 };
 </script>
 
@@ -48,7 +55,7 @@ const handleRegist = async ():Promise<void> => {
         placeholder="Повторите пароль"
         show-password
     />
-    <el-button @click="handleRegist" type="primary" round>Зарегистрироваться</el-button>
+    <el-button @click="handleRegister" type="primary" round>Зарегистрироваться</el-button>
   </div>
 </template>
 
