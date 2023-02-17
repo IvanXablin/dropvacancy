@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import type { TUser }  from "@/types/TUser";
-import { useRouter } from "vue-router";
-import {authApi} from "@/api/auth.api";
+import type { TUser }  from '@/types/TUser';
+import { useRouter } from 'vue-router';
+import { authApi } from '@/api/auth.api';
 
 const nameInput = ref('');
 const emailInput = ref('');
@@ -13,7 +13,7 @@ const router = useRouter();
 
 const handleRegister = async ():Promise<void> => {
 
-  if (passwordInput.value !== confirmPasswordInput.value) return;
+  if (!validateForm()) return;
 
   const user:TUser = {
     name: nameInput.value,
@@ -24,12 +24,31 @@ const handleRegister = async ():Promise<void> => {
   const [error, response] = await authApi.register(user);
 
   if (error) {
-    alert("Произошла ошибка, попробуйте зарегистрироваться еще раз");
+    alert(`Произошла ошибка, попробуйте зарегистрироваться еще раз\n\nОшибка: ${ error.message }` );
     return;
   }
   if (response) {
-    await router.push({ path: '/account' })
+    alert("Вы вошли");
+
+    setTimeout(async () => {
+      await router.push({ path: '/account' });
+    }, 1000);
   }
+};
+
+const validateForm = ():boolean => {
+
+  if (!nameInput.value) return false;
+
+  if (nameInput.value.length > 40) return false;
+
+  if (!emailInput.value) return false;
+
+  if (!passwordInput.value) return false;
+
+  if (passwordInput.value !== confirmPasswordInput.value) return false;
+
+  return true;
 };
 </script>
 

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { authApi } from "@/api/auth.api";
-import { useRouter } from "vue-router";
-import type { TUser }  from "@/types/TUser";
+import { authApi } from '@/api/auth.api';
+import { useRouter } from 'vue-router';
+import type { TUser }  from '@/types/TUser';
 
 const nameInput = ref('');
 const emailInput = ref('');
@@ -21,14 +21,17 @@ const handleLogin = async ():Promise<void> => {
   const [error, response] = await authApi.login(user);
 
   if (error) {
-    alert("Произошла ошибка, попробуйте войти еще раз");
+    alert(`Произошла ошибка, попробуйте войти еще раз\n\nОшибка: ${ error.message }` );
     return;
   }
   if (response) {
-    await router.push({ path: '/account' })
-  }
-}
+    alert("Вы вошли");
 
+    setTimeout(async () => {
+      await router.push({ path: '/account' });
+    }, 1000);
+  }
+};
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import RegistForm from '@/components/forms/RegistForm.vue'
-import AuthForm from '@/components/forms/AuthForm.vue'
-import { ref } from 'vue'
+import RegistForm from '@/components/forms/RegistForm.vue';
+import AuthForm from '@/components/forms/AuthForm.vue';
+import { ref } from 'vue';
 
-const activeName = ref('first')
+const activeName = ref('first');
 </script>
 
 <template>

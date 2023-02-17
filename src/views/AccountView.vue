@@ -1,7 +1,3 @@
-<script lang="ts">
-
-</script>
-
 <template>
 <div class="account-view">
   <div class="account-view__content">

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import 'element-plus/theme-chalk/display.css'
-import { ref } from 'vue'
+import { ref } from 'vue';
+import 'element-plus/theme-chalk/display.css';
 
-const drawer = ref(false)
+const drawer = ref(false);
 const handleOpenMenu = (): void => {
-  drawer.value = true
+  drawer.value = true;
 }
 </script>
 
