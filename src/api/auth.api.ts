@@ -38,6 +38,6 @@ class AuthApi extends AxiosService {
 }
 
 export const authApi = new AuthApi({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://localhost:5050',
     withCredentials: true,
 });
