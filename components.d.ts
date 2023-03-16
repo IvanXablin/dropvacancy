@@ -29,5 +29,6 @@ declare module '@vue/runtime-core' {
     RegistForm: typeof import('./src/components/forms/RegistForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VacancyCard: typeof import('./src/components/cards/VacancyCard.vue')['default']
   }
 }

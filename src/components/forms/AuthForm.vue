@@ -36,41 +36,39 @@ const handleLogin = async ():Promise<void> => {
 
 <template>
   <div class="auth-form">
-    <div class="auth-form__content">
-     <el-input
-          v-model="nameInput"
-          placeholder="Имя"
-      />
-      <el-input
-          v-model="emailInput"
-          placeholder="Почта"
-      />
-      <el-input
-          v-model="passwordInput"
-          type="password"
-          placeholder="Пароль"
-          show-password
-      />
-      <el-button @click="handleLogin" type="primary" round>Войти</el-button>
-      <el-button type="danger" round>Войти через hh.ru</el-button>
-    </div>
+      <el-form>
+        <el-form-item>
+          <el-input
+              v-model="emailInput"
+              placeholder="Почта"
+          />
+        </el-form-item>
+        <el-form-item>
+          <el-input
+              v-model="passwordInput"
+              type="password"
+              placeholder="Пароль"
+              show-password
+          />
+        </el-form-item>
+        <el-button @click="handleLogin" type="primary" round>Войти</el-button>
+      </el-form>
+    <el-button type="danger" round>Войти через hh.ru</el-button>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .auth-form {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   width: 100%;
   height: 90%;
 
-  &__content {
+  .el-form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 75%;
+    justify-content: space-evenly;
   }
 }
 </style>
