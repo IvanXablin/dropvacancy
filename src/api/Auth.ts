@@ -2,7 +2,7 @@ import type { AxiosRequestConfig } from 'axios';
 import { AxiosService } from '@/api/AxiosService';
 import type { TUser } from '@/types/TUser';
 
-class AuthApi extends AxiosService {
+class Auth extends AxiosService {
     constructor(config?: AxiosRequestConfig) {
         super(config);
     }
@@ -37,7 +37,7 @@ class AuthApi extends AxiosService {
     }
 }
 
-export const authApi = new AuthApi({
+export const authApi = new Auth({
     baseURL: 'http://localhost:5050',
     withCredentials: true,
 });

@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import type { TUser }  from '@/types/TUser';
 import { useRouter } from 'vue-router';
-import { authApi } from '@/api/auth.api';
+import { authApi } from '@/api/Auth';
 
 const nameInput = ref('');
 const emailInput = ref('');
@@ -31,7 +31,7 @@ const handleRegister = async ():Promise<void> => {
     alert("Вы вошли");
 
     setTimeout(async () => {
-      await router.push({ path: '/account' });
+      await router.push({ path: '/home' });
     }, 1000);
   }
 };
@@ -54,26 +54,38 @@ const validateForm = ():boolean => {
 
 <template>
   <div class="regist-form">
-    <el-input
-        v-model="nameInput"
-        placeholder="Ваше имя"
-    />
-    <el-input
-        v-model="emailInput"
-        placeholder="Ваша почта"
-    />
-    <el-input
-        v-model="passwordInput"
-        type="password"
-        placeholder="Пароль"
-        show-password
-    />
-    <el-input
-        v-model="confirmPasswordInput"
-        type="password"
-        placeholder="Повторите пароль"
-        show-password
-    />
+    <el-form>
+      <el-form-item>
+        <el-input
+            v-model="nameInput"
+            placeholder="Ваше имя"
+        />
+      </el-form-item>
+      <el-form-item>
+        <el-input
+            v-model="emailInput"
+            placeholder="Ваша почта"
+        />
+      </el-form-item>
+
+      <el-form-item>
+        <el-input
+            v-model="passwordInput"
+            type="password"
+            placeholder="Пароль"
+            show-password
+        />
+      </el-form-item>
+
+      <el-form-item>
+        <el-input
+            v-model="confirmPasswordInput"
+            type="password"
+            placeholder="Повторите пароль"
+            show-password
+        />
+      </el-form-item>
+    </el-form>
     <el-button @click="handleRegister" type="primary" round>Зарегистрироваться</el-button>
   </div>
 </template>
@@ -85,5 +97,11 @@ const validateForm = ():boolean => {
   justify-content: space-evenly;
   width: 100%;
   height: 90%;
+
+  .el-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 }
 </style>

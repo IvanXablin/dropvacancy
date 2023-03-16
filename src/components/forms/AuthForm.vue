@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { authApi } from '@/api/auth.api';
+import { authApi } from '@/api/Auth';
 import { useRouter } from 'vue-router';
 import type { TUser }  from '@/types/TUser';
 

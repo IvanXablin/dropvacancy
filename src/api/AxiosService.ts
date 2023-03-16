@@ -1,6 +1,6 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
-import type { AxiosResponseType } from "@/types/axios.type";
+import type { AxiosResponseType } from "@/types/TAxios";
 import Cookie from 'js-cookie';
 
 export class AxiosService {

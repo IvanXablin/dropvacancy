@@ -28,8 +28,8 @@ const activeName = ref('first');
   align-items: center;
 
   &__content {
-    width: 450px;
-    height: 400px;
+    width: 500px;
+    height: 450px;
     padding: 25px;
     background: rgba(26, 97, 135, 0.3);
     border-radius: 20px;

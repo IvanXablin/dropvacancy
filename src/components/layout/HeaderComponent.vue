@@ -14,9 +14,10 @@ const handleOpenMenu = (): void => {
   <el-row :gutter="10" class="hidden-sm-and-down">
     <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
       <div class="header__nav">
-        <router-link class="header__link" to="/">Вакансии</router-link>
-        <router-link class="header__link" to="/">Аналитика</router-link>
-        <router-link class="header__link" to="/">О нас</router-link>
+        <router-link class="header__link" to="/vacancies">Вакансии</router-link>
+        <router-link class="header__link" to="/home">Аналитика</router-link>
+        <router-link class="header__link" to="/home">О нас</router-link>
+        <router-link class="header__link" to="/auth">Вход</router-link>
       </div>
     </el-col>
   </el-row>
@@ -27,9 +28,10 @@ const handleOpenMenu = (): void => {
       </el-icon>
       <el-drawer v-model="drawer" :with-header="false" size="50%">
         <div class="menu">
-          <router-link class="header__link" to="/">Вакансии</router-link>
-          <router-link class="header__link" to="/">Аналитика</router-link>
-          <router-link class="header__link" to="/">О нас</router-link>
+          <router-link class="header__link" to="/vacancies">Вакансии</router-link>
+          <router-link class="header__link" to="/home">Аналитика</router-link>
+          <router-link class="header__link" to="/home">О нас</router-link>
+          <router-link class="header__link" to="/auth">Вход</router-link>
         </div>
       </el-drawer>
     </el-col>
@@ -41,11 +43,12 @@ const handleOpenMenu = (): void => {
 .header {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding: 30px;
   box-shadow: 1px 1px rgba(70, 70, 70, 0.2);
 
   &__logo {
-    font-size: 21px;
+    font-size: 23px;
     font-weight: bold;
     text-transform: uppercase;
   }

@@ -8,7 +8,7 @@ const router = createRouter({
       component: () => import('@/layout/Layout.vue'),
       name: 'Layout',
       redirect: {
-        name: 'AuthView',
+        name: 'HomeView',
       },
       children: [
         {
@@ -21,6 +21,16 @@ const router = createRouter({
           name: 'AccountView',
           component: () => import('@/views/AccountView.vue'),
         },
+        {
+          path: '/home',
+          name: 'HomeView',
+          component: () => import('@/views/HomeView.vue'),
+        },
+        {
+          path: '/vacancies',
+          name: 'VacanciesView',
+          component: () => import('@/views/VacanciesView.vue'),
+        }
       ],
     },
   ]
