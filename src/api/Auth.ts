@@ -38,6 +38,6 @@ class Auth extends AxiosService {
 }
 
 export const authApi = new Auth({
-    baseURL: 'http://localhost:5050',
+    baseURL: 'https://api.dropvacancy.ru/',
     withCredentials: true,
 });
