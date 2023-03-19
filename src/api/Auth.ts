@@ -11,7 +11,7 @@ class Auth extends AxiosService {
 
         return this.axiosCall({
             method: 'post',
-            url: '/api/auth/login',
+            url: '/auth/login',
             data: {
                 name,
                 email,
@@ -24,7 +24,7 @@ class Auth extends AxiosService {
 
         return this.axiosCall({
             method: 'post',
-            url: '/api/auth/register',
+            url: '/auth/register',
 
             data: {
                 name,
