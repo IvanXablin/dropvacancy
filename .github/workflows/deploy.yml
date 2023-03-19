@@ -1,4 +1,4 @@
-name: Build & Push to Docker Hub
+name: Build & Deploy
 
 on:
   push:
@@ -23,3 +23,21 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }} .
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            docker stop ${{ secrets.CONTAINER_NAME }}
+            docker rm ${{ secrets.CONTAINER_NAME }}
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}
+            docker run -d --name ${{ secrets.CONTAINER_NAME }} -p 3000:80 ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.IMAGE_NAME }}
