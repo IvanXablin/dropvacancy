@@ -31,7 +31,7 @@ const handleRegister = async ():Promise<void> => {
     alert("Вы вошли");
 
     setTimeout(async () => {
-      await router.push({ path: '/home' });
+      await router.push({ path: '/vacancies' });
     }, 1000);
   }
 };

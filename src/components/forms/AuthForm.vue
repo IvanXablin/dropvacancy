@@ -28,7 +28,7 @@ const handleLogin = async ():Promise<void> => {
     alert("Вы вошли");
 
     setTimeout(async () => {
-      await router.push({ path: '/account' });
+      await router.push({ path: '/vacancies' });
     }, 1000);
   }
 };

@@ -6,13 +6,12 @@ class Auth extends AxiosService {
     constructor(config?: AxiosRequestConfig) {
         super(config);
     }
-
     public login(user: TUser) {
         const { name, email, password, } = user;
 
         return this.axiosCall({
             method: 'post',
-            url: '/auth/login',
+            url: '/api/auth/login',
             data: {
                 name,
                 email,
@@ -20,13 +19,12 @@ class Auth extends AxiosService {
             },
         })
     }
-
     public register(user: TUser) {
         const { name, email, password, } = user;
 
         return this.axiosCall({
             method: 'post',
-            url: '/auth/register',
+            url: '/api/auth/register',
 
             data: {
                 name,
