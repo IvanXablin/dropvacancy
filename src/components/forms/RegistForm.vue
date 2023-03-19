@@ -67,7 +67,6 @@ const validateForm = ():boolean => {
             placeholder="Ваша почта"
         />
       </el-form-item>
-
       <el-form-item>
         <el-input
             v-model="passwordInput"
@@ -76,7 +75,6 @@ const validateForm = ():boolean => {
             show-password
         />
       </el-form-item>
-
       <el-form-item>
         <el-input
             v-model="confirmPasswordInput"
@@ -85,6 +83,7 @@ const validateForm = ():boolean => {
             show-password
         />
       </el-form-item>
+
     </el-form>
     <el-button @click="handleRegister" type="primary" round>Зарегистрироваться</el-button>
   </div>

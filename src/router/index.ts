@@ -8,14 +8,9 @@ const router = createRouter({
       component: () => import('@/layout/Layout.vue'),
       name: 'Layout',
       redirect: {
-        name: 'HomeView',
+        name: 'AuthView',
       },
       children: [
-        {
-          path: '/auth',
-          name: 'AuthView',
-          component: () => import('@/views/AuthView.vue'),
-        },
         {
           path: '/account',
           name: 'AccountView',
@@ -32,6 +27,11 @@ const router = createRouter({
           component: () => import('@/views/VacanciesView.vue'),
         }
       ],
+    },
+    {
+      path: '/auth',
+      name: 'AuthView',
+      component: () => import('@/views/AuthView.vue'),
     },
   ]
 });

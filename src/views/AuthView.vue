@@ -26,11 +26,12 @@ const activeName = ref('first');
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100%;
 
   &__content {
-    width: 500px;
+    width: 550px;
     height: 450px;
-    padding: 25px;
+    padding: 40px;
     background: rgba(26, 97, 135, 0.3);
     border-radius: 20px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
