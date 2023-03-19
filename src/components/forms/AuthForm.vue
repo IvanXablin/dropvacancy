@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import type { TUser }  from '@/types/TUser';
-import type { FormInstance } from 'element-plus';
 import { authApi } from '@/api/Auth';
 import { ElMessage } from 'element-plus';
 import RulesForm from '@/utils/RulesForm';
-
+import type { TUser }  from '@/types/TUser';
+import type { FormInstance } from 'element-plus';
 
 const dataAuthForm = reactive<TUser>({
   email: '',
@@ -67,6 +66,7 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
           :rules="RulesForm"
           :model="dataAuthForm"
           ref="ruleFormRef"
+          :size="'large'"
       >
         <el-form-item prop="email">
           <el-input v-model="dataAuthForm.email" placeholder="Почта" />
@@ -103,7 +103,7 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
   height: 100%;
 
   &__link {
-    font-size: 12px;
+    font-size: 14px;
     color: #99c5ff;
     text-decoration: underline;
 

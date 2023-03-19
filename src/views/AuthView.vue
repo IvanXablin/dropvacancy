@@ -34,7 +34,6 @@ const activeName = ref('first');
     padding: 40px;
     background: rgba(26, 97, 135, 0.3);
     border-radius: 20px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
   }
 }
 </style>

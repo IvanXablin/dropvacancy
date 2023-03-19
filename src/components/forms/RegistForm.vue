@@ -1,80 +1,91 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { TUser }  from '@/types/TUser';
+import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { authApi } from '@/api/Auth';
+import { ElMessage } from 'element-plus';
+import RulesForm from '@/utils/RulesForm';
+import type { FormInstance } from 'element-plus';
+import type { TUser }  from '@/types/TUser';
 
-const nameInput = ref('');
-const emailInput = ref('');
-const passwordInput = ref('');
+const dataRegistForm = reactive<TUser>({
+  name: '',
+  email: '',
+  password: '',
+});
+
 const confirmPasswordInput = ref('');
-
+const ruleFormRef = ref<FormInstance>();
 const router = useRouter();
 
-const handleRegister = async ():Promise<void> => {
+const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> => {
 
-  if (!validateForm()) return;
+  if (!formEl) return;
 
-  const user:TUser = {
-    name: nameInput.value,
-    email: emailInput.value,
-    password: passwordInput.value,
-  };
+  await formEl.validate(async (valid) => {
+    if (valid) {
 
-  const [error, response] = await authApi.register(user);
+      const [error, response] = await authApi.register(dataRegistForm);
 
-  if (error) {
-    alert(`Произошла ошибка, попробуйте зарегистрироваться еще раз\n\nОшибка: ${ error.message }` );
-    return;
-  }
-  if (response) {
-    alert("Вы вошли");
+      console.log(error);
+      console.log(response);
 
-    setTimeout(async () => {
-      await router.push({ path: '/vacancies' });
-    }, 1000);
-  }
-};
+      if (error) {
+        error.message.forEach((error: string) => {
+          ElMessage({
+            showClose: true,
+            message: error,
+            type: 'error',
+          });
+        })
+      }
 
-const validateForm = ():boolean => {
+      if (response) {
+        ElMessage({
+          message: 'Успех! Вы вошли!',
+          type: 'success',
+        });
 
-  if (!nameInput.value) return false;
-
-  if (nameInput.value.length > 40) return false;
-
-  if (!emailInput.value) return false;
-
-  if (!passwordInput.value) return false;
-
-  if (passwordInput.value !== confirmPasswordInput.value) return false;
-
-  return true;
-};
+        setTimeout(async () => {
+          await router.push({ path: '/vacancies' });
+        }, 1000);
+      }
+    }
+    else {
+      ElMessage({
+        showClose: true,
+        message: 'Заполните правильно форму!',
+        type: 'error',
+      });
+    }
+  });
+}
 </script>
 
 <template>
   <div class="regist-form">
-    <el-form>
-      <el-form-item>
-        <el-input
-            v-model="nameInput"
-            placeholder="Ваше имя"
-        />
+    <el-form
+        :rules="RulesForm"
+        :model="dataRegistForm"
+        ref="ruleFormRef"
+    >
+      <el-form-item prop="name">
+        <el-input v-model="dataRegistForm.name" placeholder="Ваше имя" />
       </el-form-item>
-      <el-form-item>
+
+      <el-form-item prop="email">
         <el-input
-            v-model="emailInput"
-            placeholder="Ваша почта"
-        />
+            v-model="dataRegistForm.email" placeholder="Ваша почта" />
       </el-form-item>
-      <el-form-item>
+
+      <el-form-item prop="password">
         <el-input
-            v-model="passwordInput"
+            v-model="dataRegistForm.password"
             type="password"
             placeholder="Пароль"
             show-password
         />
       </el-form-item>
+
       <el-form-item>
         <el-input
             v-model="confirmPasswordInput"
@@ -82,10 +93,10 @@ const validateForm = ():boolean => {
             placeholder="Повторите пароль"
             show-password
         />
-      </el-form-item>
 
+      </el-form-item>
     </el-form>
-    <el-button @click="handleRegister" type="primary" round>Зарегистрироваться</el-button>
+    <el-button @click="handleSubmitForm(ruleFormRef)" type="primary" round>Зарегистрироваться</el-button>
   </div>
 </template>
 
