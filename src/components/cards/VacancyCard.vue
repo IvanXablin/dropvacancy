@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps } from 'vue';
 import type { PropType } from 'vue'
-import type { TVacancy } from "@/types/TVacancy";
+import type { TVacancy } from '@/types/TVacancy';
 
 const props = defineProps({
   vacancy: Object as PropType<TVacancy>,
@@ -10,14 +10,16 @@ const props = defineProps({
 
 <template>
   <div class="vacancy-card">
-    <h3> {{ props.vacancy.name }} </h3>
-    <br>
-    <p>{{ props.vacancy.salary?.from }}  {{ props.vacancy.salary?.to }} {{ props.vacancy.salary?.currency }}</p>
-    <br>
-    <p>{{ props.vacancy.address?.city }}</p>
-    <br>
-    <p>{{ props.vacancy.employer?.name }}</p>
-    <br>
+    <h2 class="vacancy-card__name">
+      <a :href="props.vacancy.alternate_url"> {{ props.vacancy.name }} </a>
+    </h2>
+    <p class="vacancy-card__info">
+      {{ props.vacancy.salary?.from }}
+      {{ props.vacancy.salary?.to }}
+      {{ props.vacancy.salary?.currency }}
+    </p>
+    <p class="vacancy-card__info">{{ props.vacancy.address?.city }}</p>
+    <p class="vacancy-card__info">{{ props.vacancy.employer?.name }}</p>
     <el-button type="primary">Откликнуться</el-button>
   </div>
 </template>
@@ -25,10 +27,20 @@ const props = defineProps({
 <style lang="scss">
 .vacancy-card {
   width: 700px;
-  height: 220px;
+  height: auto;
   padding: 20px;
-  margin: 10px;
-  border: 2px #224c8b solid;
-  border-radius: 20px;
+  margin: 20px;
+  background-image: linear-gradient(to left bottom, #04204a, #0a2348, #112645, #182942, #1e2c3f);
+  border-radius: 10px;
+
+  &__info {
+    margin-bottom: 20px;
+    color: #bebebe;
+  }
+
+  &__name {
+    font-weight: bolder;
+    margin-bottom: 30px;
+  }
 }
 </style>

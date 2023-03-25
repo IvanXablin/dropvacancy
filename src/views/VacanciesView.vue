@@ -79,11 +79,13 @@ onMounted( async ():Promise<void> => {
     </el-radio-group>
   </div>
   <div class="vacancy-list">
+    <el-scrollbar height="700px">
       <vacancy-card
           v-for="vacancy in arrayHH"
           :key="vacancy.name"
           :vacancy="vacancy"
       />
+    </el-scrollbar>
   </div>
 </div>
 </template>

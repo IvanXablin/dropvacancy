@@ -21,4 +21,26 @@ html,body {
   background-image: linear-gradient(to bottom, #00050d, #05101d, #07172c, #061d3b, #08234b);
   font-family: 'Poppins', sans-serif;
   color: white;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgb(34, 34, 34);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(116, 116, 116);
+    border-radius: 20px;
+  }
 }
+
+a {
+  all: unset;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+

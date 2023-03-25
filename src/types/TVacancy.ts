@@ -3,6 +3,8 @@ export type TVacancy = {
     name: string,
     salary: TVacancySalary,
     address: TVacancyAddress,
+    employer: TVacancyEmployer,
+    alternate_url: string,
 };
 
 type TVacancySalary = {
@@ -17,4 +19,7 @@ type TVacancyAddress = {
 
 type TVacancyEmployer = {
     name: string,
+    logo_urls: {
+        original: string
+    },
 }
