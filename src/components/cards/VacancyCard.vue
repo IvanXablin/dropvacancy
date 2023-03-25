@@ -11,15 +11,15 @@ const props = defineProps({
 <template>
   <div class="vacancy-card">
     <h2 class="vacancy-card__name">
-      <a :href="props.vacancy.alternate_url"> {{ props.vacancy.name }} </a>
+      <a :href="props.vacancy?.alternate_url"> {{ props.vacancy?.name }} </a>
     </h2>
     <p class="vacancy-card__info">
-      {{ props.vacancy.salary?.from }}
-      {{ props.vacancy.salary?.to }}
-      {{ props.vacancy.salary?.currency }}
+      {{ props.vacancy?.salary?.from }}
+      {{ props.vacancy?.salary?.to }}
+      {{ props.vacancy?.salary?.currency }}
     </p>
-    <p class="vacancy-card__info">{{ props.vacancy.address?.city }}</p>
-    <p class="vacancy-card__info">{{ props.vacancy.employer?.name }}</p>
+    <p class="vacancy-card__info">{{ props.vacancy?.address?.city }}</p>
+    <p class="vacancy-card__info">{{ props.vacancy?.employer?.name }}</p>
     <el-button type="primary">Откликнуться</el-button>
     <el-button type="primary">Подробнее</el-button>
   </div>
