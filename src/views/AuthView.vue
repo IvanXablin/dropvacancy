@@ -26,7 +26,7 @@ const activeName = ref('first');
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
+  height: 100vh;
 
   &__content {
     width: 550px;

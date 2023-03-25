@@ -21,6 +21,7 @@ const props = defineProps({
     <p class="vacancy-card__info">{{ props.vacancy.address?.city }}</p>
     <p class="vacancy-card__info">{{ props.vacancy.employer?.name }}</p>
     <el-button type="primary">Откликнуться</el-button>
+    <el-button type="primary">Подробнее</el-button>
   </div>
 </template>
 
@@ -39,8 +40,8 @@ const props = defineProps({
   }
 
   &__name {
+    margin-bottom: 25px;
     font-weight: bolder;
-    margin-bottom: 30px;
   }
 }
 </style>

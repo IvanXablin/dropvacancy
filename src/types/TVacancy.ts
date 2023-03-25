@@ -5,6 +5,8 @@ export type TVacancy = {
     address: TVacancyAddress,
     employer: TVacancyEmployer,
     alternate_url: string,
+
+    found: number,
 };
 
 type TVacancySalary = {
