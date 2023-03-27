@@ -4,7 +4,7 @@
 
 <template>
   <div class="home-view">
-    <el-empty description="description" :image-size="200" />
+    <el-empty description="Контент появится позже" :image-size="450" />
   </div>
 </template>
 
