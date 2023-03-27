@@ -1,9 +1,14 @@
 <template>
 <div class="footer">
   <p class="footer__warning">© Dropvacancy 2023. Все права защищены</p>
-  <a target="_blank" href="https://github.com/IvanXablin/dropvacancy-client">
-    <img class="footer__logo" src="../../assets/images/github-mark-white.svg" alt="" />
-  </a>
+  <div class="footer__links">
+    <a target="_blank" href="https://github.com/IvanXablin">
+      <img class="footer__logo" src="../../assets/images/github-mark-white.svg" alt="" />
+    </a>
+    <a target="_blank" href="https://vk.com/xab_xab">
+      <img class="footer__logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/VK_Compact_Logo_%282021-present%29.svg" alt="" />
+    </a>
+  </div>
 </div>
 </template>
 
@@ -18,6 +23,12 @@
   &__warning {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.76);
+  }
+
+  &__links {
+    width: 120px;
+    display: flex;
+    justify-content: space-evenly;
   }
 
   &__logo {

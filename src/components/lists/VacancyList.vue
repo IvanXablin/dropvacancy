@@ -1,50 +1,58 @@
 <script setup lang="ts">
-import axios from 'axios';
-import { onMounted, ref } from 'vue';
+import {onMounted, ref, watch} from 'vue';
 import VacancyCard from '@/components/cards/VacancyCard.vue';
 import type { TVacancy } from '@/types/TVacancy';
+import { vacanciesApi } from "@/api/Vacancies.api";
+import {useVacanciesStore} from "@/store/Vacancies.store";
 
 const vacancyArray = ref<TVacancy[]>([]);
 const countVacancy = ref<number>(0);
 const page = ref<number>(1)
 
-async function fetchVacancyHeadhunder(text: string, page: number):Promise<void> {
-  const token = "H2FLFLECUNS7S4MPJF2ASV6NM1TBN0EN0CGQNUK3ANM8J1OFTMN1IACD3QGGE1C8"
+const vacanciesStore = useVacanciesStore();
 
-  const vacancies = await axios.get('https://api.hh.ru/vacancies', {
-    params: {
-      text,
-      page
-    },
-    headers: {
-     'Authorization':  'Bearer ' + token
-    }
-  })
-  vacancies.data.items.forEach((v: any) => vacancyArray.value.push(v))
-  countVacancy.value = vacancies.data.found;
+async function fetchVacancy (page: number):Promise<void> {
+
+  const params = {
+    text: 'Backend',
+    page: page,
+  }
+  const [error, response] = await vacanciesApi.getVacancies(params);
+
+ response.items.forEach((vacancy: any) => vacancyArray.value.push(vacancy));
+  console.log(vacanciesStore.getVacancies)
+  countVacancy.value = response.found;
+}
+
+function lol() {
+  page.value += 1;
+  vacanciesStore.setPage(page.value)
 }
 
 const load = () => {
   setTimeout(async () => {
     page.value += 1;
-    await fetchVacancyHeadhunder('Frontend', page.value)
+   // await fetchVacancy(page.value)
   }, 2000)
 }
 
 onMounted( async ():Promise<void> => {
-  await fetchVacancyHeadhunder('Frontend', page.value);
+  //await fetchVacancy(page.value);
+  await vacanciesStore.setVacancies()
 });
 </script>
 
 <template>
   <div class="vacancy-list">
-    <p>Найдено: {{ countVacancy }} вакансий</p>
     <el-scrollbar height="750px">
-      <vacancy-card
-          v-for="vacancy in vacancyArray"
-          :key="vacancy.name"
-          :vacancy="vacancy"
-      />
+      <template v-if="vacanciesStore.getVacancies">
+        <vacancy-card
+            v-for="vacancy in vacanciesStore.getVacancies"
+            :key="vacancy.name"
+            :vacancy="vacancy"
+        />
+      </template>
+      <el-empty v-else :image-size="200" />
     </el-scrollbar>
   </div>
 </template>

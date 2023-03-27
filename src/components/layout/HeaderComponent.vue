@@ -10,7 +10,7 @@ const handleOpenMenu = (): void => {
 
 <template>
 <div class="header">
-  <p class="header__logo">dropvacancy</p>
+  <router-link class="header__logo" to="/home">Dropvacancy</router-link>
   <el-row :gutter="10" class="hidden-sm-and-down">
     <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
       <div class="header__nav">
@@ -42,9 +42,9 @@ const handleOpenMenu = (): void => {
 <style lang="scss" scoped>
 .header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 30px;
+  padding: 35px;
   box-shadow: 1px 1px rgba(70, 70, 70, 0.2);
 
   &__logo {

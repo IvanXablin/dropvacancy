@@ -13,11 +13,10 @@ export class AxiosService {
             config.xsrfCookieName = 'XSRF-TOKEN';
             config.xsrfHeaderName = 'X-XSRF-TOKEN';
 
-            const token = Cookie.get();
 
-            config.headers = {
-                Authorization: `Bearer ${token.token}`,
-            };
+           // config.headers = {
+           //     Authorization: `Bearer ${ token }`,
+           // };
 
             return config;
         })
