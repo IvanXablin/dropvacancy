@@ -1,76 +1,73 @@
 <script setup lang="ts">
-import {onMounted, ref, watch} from 'vue';
+import { onMounted, ref } from 'vue';
 import VacancyCard from '@/components/cards/VacancyCard.vue';
-import type { TVacancy } from '@/types/TVacancy';
-import { vacanciesApi } from "@/api/Vacancies.api";
 import {useVacanciesStore} from "@/store/Vacancies.store";
 
-const vacancyArray = ref<TVacancy[]>([]);
-const countVacancy = ref<number>(0);
-const page = ref<number>(1)
-
 const vacanciesStore = useVacanciesStore();
+const page = ref<number>(1);
 
-async function fetchVacancy (page: number):Promise<void> {
-
-  const params = {
-    text: 'Backend',
-    page: page,
-  }
-  const [error, response] = await vacanciesApi.getVacancies(params);
-
- response.items.forEach((vacancy: any) => vacancyArray.value.push(vacancy));
-  console.log(vacanciesStore.getVacancies)
-  countVacancy.value = response.found;
-}
-
-function lol() {
-  page.value += 1;
-  vacanciesStore.setPage(page.value)
-}
-
-const load = () => {
-  setTimeout(async () => {
-    page.value += 1;
-   // await fetchVacancy(page.value)
-  }, 2000)
-}
+const handleLoadVacancy = () => {
+  page.value++;
+  vacanciesStore.setPage(page.value);
+};
 
 onMounted( async ():Promise<void> => {
-  //await fetchVacancy(page.value);
-  await vacanciesStore.setVacancies()
+  await vacanciesStore.setVacancies();
 });
 </script>
 
 <template>
   <div class="vacancy-list">
-    <el-scrollbar height="750px">
-      <template v-if="vacanciesStore.getVacancies">
+    <el-scrollbar
+        v-if="vacanciesStore.getVacancies"
+        height="750px"
+    >
+      <div class="vacancy-list__content">
         <vacancy-card
             v-for="vacancy in vacanciesStore.getVacancies"
-            :key="vacancy.name"
+            :key="vacancy.id"
             :vacancy="vacancy"
         />
-      </template>
-      <el-empty v-else :image-size="200" />
+        <hr class="vacancy-list__line">
+        <el-button size="default" type="primary" @click="handleLoadVacancy">
+          Показать еще
+        </el-button>
+      </div>
     </el-scrollbar>
+    <div
+        class="vacancy-list__loader"
+        v-loading="true"
+        element-loading-background="#7c7c7c26"
+        element-loading-text="Загрузка..."
+        v-else
+    >
+    </div>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .vacancy-list {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding: 10px;
 
-  p {
-    margin: 10px;
-    color: #bdbdbd;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  .sas {
-    margin: 35px;
+  &__line {
+    margin: 15px 0;
+  }
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 750px;
+    height: 750px;
   }
 }
 </style>

@@ -51,20 +51,20 @@ const options = [
 
 const specialty = ref<string[]>([]);
 const income = ref<number>();
-const city = ref<string[]>([]);
+const city = ref<string>();
 const level = ref<string>();
-const schedule = ref<string[]>()
+const schedule = ref<string[]>();
 
 const vacanciesStore = useVacanciesStore();
 
 const handleChangeFilter = () => {
   const optionsFilter = {
-    text: specialty.value.join(' '),
-    schedule: schedule.value,
-    salary: income.value,
-    area: city.value.join(' '),
+    text: specialty?.value.join(' OR '),
+    schedule: schedule?.value,
+    salary: income?.value,
+    area: city?.value,
   }
-  vacanciesStore.setFilter(optionsFilter)
+  vacanciesStore.setFilter(optionsFilter);
 };
 
 watch([specialty, income, city, level, schedule], () => {
@@ -110,10 +110,10 @@ watch([specialty, income, city, level, schedule], () => {
 
       <div class="vacancy-filter__item">
         <p class="vacancy-filter__name">Локация</p>
-        <el-checkbox-group v-model="city">
-          <el-checkbox label="1" >Москва</el-checkbox>
-          <el-checkbox label="4" >Новосибирск</el-checkbox>
-        </el-checkbox-group>
+        <el-radio-group v-model="city">
+          <el-radio :label="1">Москва</el-radio>
+          <el-radio :label="4">Новосибирск</el-radio>
+        </el-radio-group>
       </div>
 
       <div class="vacancy-filter__item">

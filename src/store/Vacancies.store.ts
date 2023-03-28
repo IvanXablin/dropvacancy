@@ -15,7 +15,14 @@ export const useVacanciesStore = defineStore('vacancies', {
     } as State),
     getters: {
         getVacancies(state) {
-            return state.vacancies
+            console.log(state.vacancies)
+
+            if (!state.vacancies.length) {
+                console.log('jaj')
+                return false;
+            }
+
+            return state.vacancies;
         },
     },
     actions: {
@@ -23,7 +30,8 @@ export const useVacanciesStore = defineStore('vacancies', {
             const params = {
                 text: 'Программирование',
                 page: 1,
-            }
+            };
+
             const [error, response] = await vacanciesApi.getVacancies(params);
             this.vacancies = response.items;
         },

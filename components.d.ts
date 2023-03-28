@@ -25,7 +25,6 @@ declare module '@vue/runtime-core' {
     ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
-    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     FooterComponent: typeof import('./src/components/layout/FooterComponent.vue')['default']
@@ -36,5 +35,9 @@ declare module '@vue/runtime-core' {
     VacancyCard: typeof import('./src/components/cards/VacancyCard.vue')['default']
     VacancyFilter: typeof import('./src/components/filters/VacancyFilter.vue')['default']
     VacancyList: typeof import('./src/components/lists/VacancyList.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    vInfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }
