@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import VacancyCard from '@/components/cards/VacancyCard.vue';
-import {useVacanciesStore} from "@/store/Vacancies.store";
+import { useVacanciesStore } from "@/store/Vacancies.store";
 
 const vacanciesStore = useVacanciesStore();
 const page = ref<number>(1);
 
-const handleLoadVacancy = () => {
+const handleLoadVacancy = ():void => {
   page.value++;
   vacanciesStore.setPage(page.value);
 };
@@ -60,6 +60,7 @@ onMounted( async ():Promise<void> => {
 
   &__line {
     margin: 15px 0;
+    opacity: 0.1;
   }
 
   &__loader {

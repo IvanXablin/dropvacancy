@@ -1,4 +1,4 @@
-import {reactive} from "vue";
+import { reactive } from "vue";
 import type { FormRules } from "element-plus";
 
 const RulesForm = reactive<FormRules>({
