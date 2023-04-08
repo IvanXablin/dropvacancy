@@ -6,6 +6,7 @@ import { ElMessage } from 'element-plus';
 import RulesForm from '@/utils/RulesForm';
 import type { FormInstance } from 'element-plus';
 import type { TUser }  from '@/types/TUser';
+import Cookies from 'js-cookie';
 
 const dataRegistForm = reactive<TUser>({
   name: '',
@@ -26,9 +27,6 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
 
       const [error, response] = await authApi.register(dataRegistForm);
 
-      console.log(error);
-      console.log(response);
-
       if (error) {
         error.message.forEach((error: string) => {
           ElMessage({
@@ -44,7 +42,7 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
           message: 'Успех! Вы вошли!',
           type: 'success',
         });
-
+        Cookies.set('ACCESS_TOKEN_KEY', response.accessToken)
         setTimeout(async () => {
           await router.push({ path: '/vacancies' });
         }, 1000);
@@ -71,12 +69,10 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
       <el-form-item prop="name">
         <el-input v-model="dataRegistForm.name" placeholder="Ваше имя" />
       </el-form-item>
-
       <el-form-item prop="email">
         <el-input
             v-model="dataRegistForm.email" placeholder="Ваша почта" />
       </el-form-item>
-
       <el-form-item prop="password">
         <el-input
             v-model="dataRegistForm.password"
@@ -85,7 +81,6 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
             show-password
         />
       </el-form-item>
-
       <el-form-item>
         <el-input
             v-model="confirmPasswordInput"
@@ -93,7 +88,6 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
             placeholder="Повторите пароль"
             show-password
         />
-
       </el-form-item>
     </el-form>
     <el-button @click="handleSubmitForm(ruleFormRef)" type="primary" round>Зарегистрироваться</el-button>

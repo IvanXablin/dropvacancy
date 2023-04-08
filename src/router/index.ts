@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import Cookies from "js-cookie";
 
 const router = createRouter({
   history: createWebHistory(''),
@@ -40,4 +41,11 @@ const router = createRouter({
     },
   ]
 });
+
+router.beforeEach(async (to, from, next) => {
+  const access_token = Cookies.get('ACCESS_TOKEN_KEY')
+  if (to.name !== 'AuthView' && !access_token) next({ name: 'AuthView' })
+  else next()
+})
+
 export default router;
