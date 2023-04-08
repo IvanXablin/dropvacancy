@@ -10,8 +10,8 @@ const activeTab = ref('regist');
   <div class="auth-view">
     <div class="auth-view__welcome">
       <h1>Добро пожаловать на Dropvacancy!</h1>
-      <p>Персональные подборки проверенных IT-вакансий</p>
-      <p>Пройдите регистрацию и настройте фильтр по себя</p>
+      <p class="auth-view__info">Персональные подборки проверенных IT-вакансий</p>
+      <p class="auth-view__info">Пройдите регистрацию и настройте фильтр по себя</p>
     </div>
     <div class="auth-view__forms">
       <el-tabs v-model="activeTab">
@@ -32,26 +32,34 @@ const activeTab = ref('regist');
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 10px;
   gap: 50px;
 
   &__welcome {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    padding: 20px;
     text-align: center;
+  }
 
-    p {
-      font-size: 17px;
-      color: #afaeae;
-    }
+  &__info {
+    font-size: 17px;
+    color: #cccccc;
   }
 
   &__forms {
-    width: 550px;
+    max-width: 550px;
+    width: 100%;
     height: 450px;
     padding: 40px;
     background: rgba(26, 97, 135, 0.3);
     border-radius: 20px;
+  }
+
+  @media screen and (max-width: 810px) {
+    flex-direction: column;
+    gap: 30px;
   }
 }
 </style>

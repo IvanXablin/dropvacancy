@@ -25,7 +25,12 @@ const router = createRouter({
           path: '/vacancies',
           name: 'VacanciesView',
           component: () => import('@/views/VacanciesView.vue'),
-        }
+        },
+        {
+          path: '/filter-settings',
+          name: 'filter-settings',
+          component: () => import('@/views/SettingFilterView.vue'),
+        },
       ],
     },
     {

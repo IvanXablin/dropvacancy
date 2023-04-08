@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import { authApi } from '@/api/Auth';
+import { authApi } from '@/api/Auth.api';
 import { ElMessage } from 'element-plus';
 import RulesForm from '@/utils/RulesForm';
 import type { TUser }  from '@/types/TUser';
