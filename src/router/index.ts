@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import Cookies from "js-cookie";
 
 const router = createRouter({
   history: createWebHistory(''),
@@ -25,7 +26,12 @@ const router = createRouter({
           path: '/vacancies',
           name: 'VacanciesView',
           component: () => import('@/views/VacanciesView.vue'),
-        }
+        },
+        {
+          path: '/filter-settings',
+          name: 'filter-settings',
+          component: () => import('@/views/SettingFilterView.vue'),
+        },
       ],
     },
     {
@@ -35,4 +41,11 @@ const router = createRouter({
     },
   ]
 });
+
+router.beforeEach(async (to, from, next) => {
+  const accessToken = Cookies.get('ACCESS_TOKEN_KEY');
+  if (to.name !== 'AuthView' && !accessToken) next({ name: 'AuthView' })
+  else next();
+})
+
 export default router;

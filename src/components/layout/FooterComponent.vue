@@ -1,6 +1,6 @@
 <template>
 <div class="footer">
-  <p class="footer__warning">© Dropvacancy 2023. Все права защищены</p>
+  <p class="footer__warning">© Dropvacancy 2022-2023. Все права защищены.</p>
   <div class="footer__links">
     <a target="_blank" href="https://github.com/IvanXablin">
       <img class="footer__logo" src="../../assets/images/github-mark-white.svg" alt="" />

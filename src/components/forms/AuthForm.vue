@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import { authApi } from '@/api/Auth';
+import { authApi } from '@/api/Auth.api';
 import { ElMessage } from 'element-plus';
 import RulesForm from '@/utils/RulesForm';
 import type { TUser }  from '@/types/TUser';
@@ -21,20 +21,25 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
 
   await formEl.validate(async (valid) => {
     if (valid) {
-
       const [error, response] = await authApi.login(dataAuthForm);
 
-      console.log(error);
-      console.log(response);
-
       if (error) {
-        error.message.forEach((error: string) => {
+        if (Array.isArray(error.message)) {
+          error.message.forEach((error: string) => {
+            ElMessage({
+              showClose: true,
+              message: error,
+              type: 'error',
+            });
+          });
+        }
+        else {
           ElMessage({
             showClose: true,
-            message: error,
+            message: error.message,
             type: 'error',
           });
-        })
+        }
       }
 
       if (response) {
@@ -42,10 +47,9 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
           message: 'Успех! Вы вошли!',
           type: 'success',
         });
-
         setTimeout(async () => {
-          await router.push({ path: '/vacancies' });
-        }, 1000);
+          await router.push({ path: '/filter-settings' });
+        }, 500);
       }
     }
     else {
@@ -71,7 +75,6 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
         <el-form-item prop="email">
           <el-input v-model="dataAuthForm.email" placeholder="Почта" />
         </el-form-item>
-
         <el-form-item prop="password">
           <el-input
               v-model="dataAuthForm.password"
@@ -79,16 +82,12 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
               placeholder="Пароль"
               show-password
           />
-
         </el-form-item>
-
         <el-form-item>
           <p class="auth-form__link">Забыли пароль?</p>
         </el-form-item>
-
         <el-form-item>
           <el-button @click="handleSubmitForm(ruleFormRef)" type="primary" round>Войти</el-button>
-          <el-button type="danger" round>Войти через hh.ru</el-button>
         </el-form-item>
       </el-form>
   </div>

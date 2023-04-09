@@ -1,53 +1,7 @@
 <script setup lang="ts">
-import {ref, watch} from 'vue';
-import { useVacanciesStore } from "@/store/Vacancies.store";
-
-const options = [
-  {
-    value: 'Frontend',
-    label: 'JS/TS Frontend',
-  },
-  {
-    value: 'Backend',
-    label: 'Backend',
-  },
-  {
-    value: 'Java',
-    label: 'Java',
-  },
-  {
-    value: 'DevOps',
-    label: 'DevOps',
-  },
-  {
-    value: 'PHP',
-    label: 'PHP',
-  },
-  {
-    value: 'Android',
-    label: 'Android',
-  },
-  {
-    value: 'IOS',
-    label: 'IOS',
-  },
-  {
-    value: 'Python',
-    label: 'Python',
-  },
-  {
-    value: 'Ruby',
-    label: 'Ruby',
-  },
-  {
-    value: 'C',
-    label: 'C/C++',
-  },
-  {
-    value: 'Product Analyst ',
-    label: 'Product Analyst ',
-  },
-];
+import { ref, watch } from 'vue';
+import { useVacanciesStore } from '@/store/Vacancies.store';
+import { specialtiesList } from '@/utils/SpecialtiesList';
 
 const specialty = ref<string[]>([]);
 const income = ref<number>();
@@ -70,7 +24,6 @@ const handleChangeFilter = () => {
 watch([specialty, income, city, level, schedule], () => {
   handleChangeFilter()
 });
-
 </script>
 
 <template>
@@ -88,10 +41,10 @@ watch([specialty, income, city, level, schedule], () => {
             placeholder="Выбрать"
         >
           <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
+              v-for="specialty in specialtiesList"
+              :key="specialty.value"
+              :label="specialty.label"
+              :value="specialty.value"
           />
         </el-select>
       </div>
@@ -135,12 +88,12 @@ watch([specialty, income, city, level, schedule], () => {
   margin: 10px;
 
   &__item {
-    margin: 30px;
+    margin: 10px;
     padding: 10px;
   }
 
   &__name {
-    font-size: 20px;
+    font-size: 21px;
     font-weight: bolder;
     margin-bottom: 10px;
   }

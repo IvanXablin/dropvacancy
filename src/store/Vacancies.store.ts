@@ -1,9 +1,14 @@
 import { defineStore } from "pinia";
-import {vacanciesApi} from "@/api/Vacancies.api";
+import { vacanciesApi } from "@/api/Vacancies.api";
+import type { TVacancy } from "@/types/TVacancy";
 
 interface State {
-    vacancies: any;
+    vacancies: TVacancy[];
     optionFilters: any;
+    text: string;
+    salary: number | null;
+    schedule: string | null;
+    area: number | null;
     page: number;
 };
 
@@ -11,40 +16,44 @@ export const useVacanciesStore = defineStore('vacancies', {
     state: () => ({
         vacancies: [],
         optionFilters: {},
+        text: 'Разработчик AND Программист',
+        salary: null,
+        schedule: null,
+        area: null,
         page: 1,
     } as State),
     getters: {
         getVacancies(state) {
-            console.log(state.vacancies)
-
             if (!state.vacancies.length) {
-                console.log('jaj')
                 return false;
             }
-
             return state.vacancies;
         },
     },
     actions: {
         async setVacancies(){
             const params = {
-                text: 'Программирование',
+                text: this.text,
                 page: 1,
             };
-
             const [error, response] = await vacanciesApi.getVacancies(params);
             this.vacancies = response.items;
         },
         async setFilter(optionsFilter: any) {
             this.optionFilters = optionsFilter;
 
+            this.text = optionsFilter.text;
+            this.salary = optionsFilter.salary;
+            this.schedule = optionsFilter.schedule;
+            this.area = optionsFilter.area;
+
             const params = {
-                text: this.optionFilters.text,
+                text: this.text,
                 page: 1,
-                salary: this.optionFilters.salary,
-                schedule: this.optionFilters.schedule,
-                area: this.optionFilters.area
-            }
+                salary: this.salary,
+                schedule: this.schedule,
+                area: this.area,
+            };
             const [error, response] = await vacanciesApi.getVacancies(params);
             this.vacancies = response.items;
         },
@@ -52,13 +61,12 @@ export const useVacanciesStore = defineStore('vacancies', {
             this.page = page;
 
             const params = {
-                text: this.optionFilters.text,
+                text: this.text,
                 page: this.page,
-                salary: this.optionFilters.salary,
-                schedule: this.optionFilters.schedule,
-                area: this.optionFilters.area
+                salary: this.salary,
+                schedule: this.schedule,
+                area: this.area,
             }
-
             const [error, response] = await vacanciesApi.getVacancies(params);
             response.items.forEach((vacancy: any) => this.vacancies.push(vacancy));
         }

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 import type { AxiosResponseType } from "@/types/TAxios";
-import Cookie from 'js-cookie';
 
 export class AxiosService {
     private axiosInstance!: AxiosInstance;
@@ -12,11 +11,6 @@ export class AxiosService {
         this.axiosInstance.interceptors.request.use((config) => {
             config.xsrfCookieName = 'XSRF-TOKEN';
             config.xsrfHeaderName = 'X-XSRF-TOKEN';
-
-
-           // config.headers = {
-           //     Authorization: `Bearer ${ token }`,
-           // };
 
             return config;
         })
