@@ -6,6 +6,7 @@ import { ElMessage } from 'element-plus';
 import RulesForm from '@/utils/RulesForm';
 import type { TUser }  from '@/types/TUser';
 import type { FormInstance } from 'element-plus';
+import Cookies from "js-cookie";
 
 const dataAuthForm = reactive<TUser>({
   email: '',
@@ -47,8 +48,9 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
           message: 'Успех! Вы вошли!',
           type: 'success',
         });
+        Cookies.set('ACCESS_TOKEN_KEY', response.accessToken)
         setTimeout(async () => {
-          await router.push({ path: '/filter-settings' });
+          await router.push({ path: '/vacancies' });
         }, 500);
       }
     }
