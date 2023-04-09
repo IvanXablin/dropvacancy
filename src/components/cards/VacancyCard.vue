@@ -26,14 +26,12 @@ const props = defineProps({
 
 <style lang="scss">
 .vacancy-card {
-  width: 700px;
-  height: auto;
+  max-width: 620px;
   padding: 20px;
   margin: 20px;
   background-image: linear-gradient(to left bottom, #04204a, #0a2348, #112645, #182942, #1e2c3f);
   border: 1px rgba(255, 255, 255, 0.15) solid;
   border-radius: 10px;
-
 
   &__info {
     margin-bottom: 20px;

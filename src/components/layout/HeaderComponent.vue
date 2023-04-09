@@ -26,7 +26,7 @@ const handleOpenMenu = (): void => {
       <el-icon size="30px" color="white" @click="handleOpenMenu">
         <Menu />
       </el-icon>
-      <el-drawer v-model="drawer" :with-header="false" size="70%">
+      <el-drawer v-model="drawer" title="" size="100%">
         <div class="menu">
           <router-link class="header__link" to="/vacancies">Вакансии</router-link>
           <router-link class="header__link" to="/home">Аналитика</router-link>

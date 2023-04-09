@@ -49,13 +49,16 @@ onMounted( async ():Promise<void> => {
 .vacancy-list {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   padding: 10px;
+  max-width: 630px;
+  width: 100%;
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 700px;
+    width: 100%;
   }
 
   &__line {

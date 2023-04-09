@@ -15,5 +15,6 @@ import VacancyFilter from '@/components/filters/VacancyFilter.vue';
   display: flex;
   justify-content: center;
   padding: 35px;
+  width: 100%;
 }
 </style>
