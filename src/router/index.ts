@@ -39,6 +39,11 @@ const router = createRouter({
       name: 'AuthView',
       component: () => import('@/views/AuthView.vue'),
     },
+    {
+      path: '/:pathMatch(.*)*',
+      name: '404',
+      component: () => import('@/views/404.vue'),
+    }
   ]
 });
 

@@ -18,8 +18,9 @@ import VacancyFilter from '@/components/filters/VacancyFilter.vue';
   width: 100%;
   
   @media screen and (max-width: 678px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
+    padding: 25px 5px;
   }
 }
 </style>

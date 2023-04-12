@@ -34,5 +34,11 @@
   &__logo {
     width: 27px;
   }
+
+  @media screen and (max-width: 578px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
 }
 </style>

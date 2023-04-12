@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
+import { onMounted, ref } from 'vue';
+import { usersApi } from '@/api/Users.api';
+import Cookies from "js-cookie";
 const isSendEmail = ref(true);
+
+onMounted(async () => {
+  const id = Cookies.get('ID');
+  const [response, error] = await usersApi.getInfo(id);
+  console.log(response)
+});
 </script>
 
 <template>

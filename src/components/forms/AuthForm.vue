@@ -48,10 +48,9 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
           message: 'Успех! Вы вошли!',
           type: 'success',
         });
+        Cookies.set('ID', response.user._id)
         Cookies.set('ACCESS_TOKEN_KEY', response.accessToken)
-        setTimeout(async () => {
-          await router.push({ path: '/vacancies' });
-        }, 500);
+        await router.push({ path: '/vacancies' });
       }
     }
     else {
