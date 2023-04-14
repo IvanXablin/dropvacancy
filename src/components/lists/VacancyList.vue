@@ -50,7 +50,7 @@ onMounted( async ():Promise<void> => {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  max-width: 630px;
+  max-width: 730px;
   width: 100%;
 
   &__content {

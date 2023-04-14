@@ -28,8 +28,13 @@ const router = createRouter({
           component: () => import('@/views/VacanciesView.vue'),
         },
         {
-          path: '/filter-settings',
-          name: 'filter-settings',
+          path: '/vacancy/:id',
+          name: 'AboutVacancy',
+          component: () => import('@/views/VacancyAbout.vue'),
+        },
+        {
+          path: '/filterSettings',
+          name: 'filterSettings',
           component: () => import('@/views/SettingFilterView.vue'),
         },
       ],
@@ -41,9 +46,16 @@ const router = createRouter({
     },
     {
       path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      redirect: {
+        name: '404'
+      },
+    },
+    {
+      path: '/404',
       name: '404',
       component: () => import('@/views/404.vue'),
-    }
+    },
   ]
 });
 

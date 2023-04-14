@@ -12,6 +12,12 @@ class VacanciesAPI extends AxiosService {
             params: params
         })
     }
+    public getVacancyById(id: string) {
+        return this.axiosCall({
+            method: 'get',
+            url: `/vacancies/${id}?host=hh.ru`,
+        })
+    }
 }
 
 export const vacanciesApi = new VacanciesAPI({

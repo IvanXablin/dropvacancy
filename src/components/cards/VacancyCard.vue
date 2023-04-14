@@ -2,6 +2,9 @@
 import { defineProps } from 'vue';
 import type { PropType } from 'vue'
 import type { TVacancy } from '@/types/TVacancy';
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const props = defineProps({
   vacancy: Object as PropType<TVacancy>,
@@ -20,7 +23,12 @@ const props = defineProps({
     </p>
     <p class="vacancy-card__info">{{ props.vacancy?.address?.city }}</p>
     <p class="vacancy-card__info">{{ props.vacancy?.employer?.name }}</p>
-    <el-button type="primary">Подробнее</el-button>
+    <el-button
+        @click="router.push({ path: `/vacancy/${props.vacancy?.id}` })"
+        type="primary"
+    >
+      Подробнее
+    </el-button>
   </div>
 </template>
 

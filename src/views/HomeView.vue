@@ -12,9 +12,9 @@ import { Bar } from 'vue-chartjs'
 import { specialtiesList } from "@/utils/SpecialtiesList";
 import { vacanciesApi } from "@/api/Vacancies.api";
 import {onMounted, ref} from "vue";
+import VacancyFilter from "@/components/filters/VacancyFilter.vue";
 
-const countVacancies = ref<any[]>([])
-
+const countVacancies = ref<any[]>([2000, 602, 703, 4343, 5455, 4600, 2121, 3000, 100, 6234, 210])
 
 const data = ref<any>({
   labels: specialtiesList.map((s: any) => s.label),
@@ -46,7 +46,10 @@ onMounted(async () => {
 <template>
   <div class="home-view">
     <div class="home-view__content">
-      <Bar :data="data" :options="options" />
+      <vacancy-filter/>
+      <div style="width: 800px">
+        <Bar :data="data" :options="options" />
+      </div>
     </div>
   </div>
 </template>
@@ -56,9 +59,11 @@ onMounted(async () => {
   display: flex;
   justify-content: center;
   padding: 50px;
+  min-width: 100%;
 
   &__content {
-    width: 80%;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>
