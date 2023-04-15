@@ -28,6 +28,11 @@ const router = createRouter({
           component: () => import('@/views/VacanciesView.vue'),
         },
         {
+          path: '/map',
+          name: 'MapView',
+          component: () => import('@/views/Map.vue'),
+        },
+        {
           path: '/vacancy/:id',
           name: 'AboutVacancy',
           component: () => import('@/views/VacancyAbout.vue'),
