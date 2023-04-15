@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { YandexMap } from 'vue-yandex-maps'
 
 const settings = {
