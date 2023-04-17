@@ -53,7 +53,7 @@ const activeTab = ref('regist');
     width: 100%;
     height: 450px;
     padding: 40px;
-    background: rgba(26, 97, 135, 0.3);
+    background-image: linear-gradient(to left bottom, #051937, #131a31, #1b1c2c, #1f1e26, #212121);
     border-radius: 20px;
   }
 

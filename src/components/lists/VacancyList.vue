@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import VacancyCard from '@/components/cards/VacancyCard.vue';
-import { useVacanciesStore } from "@/store/Vacancies.store";
+import { useVacanciesStore } from '@/store/Vacancies.store';
 
 const vacanciesStore = useVacanciesStore();
-const page = ref<number>(1);
+const page = ref(1);
 
 const handleLoadVacancy = ():void => {
   page.value++;
@@ -29,7 +29,11 @@ onMounted( async ():Promise<void> => {
             :vacancy="vacancy"
         />
         <hr class="vacancy-list__line">
-        <el-button size="default" type="primary" @click="handleLoadVacancy">
+        <el-button
+            size="default"
+            type="primary"
+            @click="handleLoadVacancy"
+        >
           Показать еще
         </el-button>
       </div>
@@ -70,7 +74,7 @@ onMounted( async ():Promise<void> => {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 750px;
+    width: 100%;
     height: 750px;
   }
 }

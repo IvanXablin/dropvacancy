@@ -2,15 +2,23 @@
 import { useRoute } from "vue-router";
 import { onMounted, ref } from "vue";
 import { vacanciesApi } from "@/api/Vacancies.api";
+import { YandexMap, YandexMarker } from "vue-yandex-maps";
 const route = useRoute();
 
 const vacancy = ref<any>(null);
-const activeNames = ref(['1'])
 
 onMounted(async () => {
   const [error, response] = await vacanciesApi.getVacancyById(String(route.params.id))
   vacancy.value = response
 })
+
+const settings = {
+  apiKey: '9f1bb2b3-f21c-44d6-bfe9-f8adf1f152bf',
+  lang: 'ru_RU',
+  coordorder: 'latlong',
+  debug: true,
+  version: '2.1'
+};
 </script>
 
 <template>
@@ -18,25 +26,38 @@ onMounted(async () => {
     <div class="vacancy-about__content">
       <div class="vacancy-about__title">
         <h1>{{ vacancy?.name }}</h1>
-        <h3>от {{ vacancy?.salary?.from }} руб. на руки</h3>
+        <h3 v-if="vacancy?.salary?.from">от {{ vacancy?.salary?.from }} руб. на руки</h3>
         <p>Требуемый опыт работы: {{ vacancy?.experience?.name }}</p>
         <p>Тип занятости: {{ vacancy?.employment?.name }}</p>
       </div>
       <h2>Описание:</h2>
       <div class="vacancy-about__description" v-html="vacancy?.description"></div>
-      <h2>Ключевые навыки:</h2>
-      <div class="vacancy-about__tags">
-        <el-tag
-            v-for="skill in vacancy?.key_skills"
-            :key="skill.name"
-            class="ml-2"
-            type="info"
-            size="large"
-            round
-        >
-          {{ skill.name }}
-        </el-tag>
-      </div>
+      <template v-if="vacancy?.key_skills.length">
+        <h2>Ключевые навыки:</h2>
+        <div class="vacancy-about__tags">
+          <el-tag
+              v-for="skill in vacancy?.key_skills"
+              :key="skill.name"
+              class="ml-2"
+              type="info"
+              size="large"
+              round
+          >
+            {{ skill.name }}
+          </el-tag>
+        </div>
+      </template>
+      <template v-if="vacancy?.address?.lat">
+        <h2>Адрес</h2>
+        <div class="vacancy-about__tags">
+          <YandexMap :settings="settings" :coordinates="[vacancy?.address?.lat, vacancy?.address?.lng]" :zoom="18" >
+            <YandexMarker
+                :coordinates="[vacancy?.address?.lat, vacancy?.address?.lng]"
+                :marker-id="vacancy.id"
+            />
+          </YandexMap>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -53,8 +74,8 @@ onMounted(async () => {
     flex-direction: column;
     gap: 30px;
     width: 1080px;
-    padding: 50px;
-    background-color: rgba(30, 44, 63, 0.33);
+    padding: 30px;
+    background-image: linear-gradient(to left bottom, #051937, #131a31, #1b1c2c, #1f1e26, #212121);
     border-radius: 10px;
   }
 
@@ -67,9 +88,8 @@ onMounted(async () => {
   &__description {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     padding: 15px;
-    background-color: rgba(30, 44, 63, 0.63);
 
     strong {
       font-weight: bolder;
@@ -77,7 +97,7 @@ onMounted(async () => {
 
     li {
       margin-left: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
   }
 
@@ -86,7 +106,11 @@ onMounted(async () => {
     flex-wrap: wrap;
     gap: 20px;
     padding: 10px;
-    background-color: rgba(30, 44, 63, 0.63);
   }
+}
+
+.yandex-container {
+  width: 100%;
+  height: 300px;
 }
 </style>
