@@ -1,26 +1,39 @@
 <script setup lang="ts">
 import VacancyList from '@/components/lists/VacancyList.vue';
 import VacancyFilter from '@/components/filters/VacancyFilter.vue';
+import VacanciesPanel from "@/components/panels/VacanciesPanel.vue";
 </script>
 
 <template>
 <div class="vacancy-view">
-  <vacancy-filter />
-  <vacancy-list/>
+  <vacancies-panel/>
+  <div class="vacancy-view__content">
+    <vacancy-filter />
+    <vacancy-list/>
+  </div>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .vacancy-view {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 35px;
-  width: 100%;
-  
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @media screen and (max-width: 678px) {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+
   @media screen and (max-width: 678px) {
-    flex-direction: column-reverse;
-    align-items: center;
-    padding: 25px 5px;
+    padding: 15px;
   }
 }
 </style>

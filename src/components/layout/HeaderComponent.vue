@@ -48,7 +48,7 @@ const handleOpenMenu = (): void => {
   box-shadow: 1px 1px rgba(70, 70, 70, 0.2);
 
   &__logo {
-    font-size: 23px;
+    font-size: 21px;
     font-weight: bold;
     text-transform: uppercase;
   }

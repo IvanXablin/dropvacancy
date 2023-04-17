@@ -1,3 +1,7 @@
 .el-button.is-round  + .el-button.is-round {
   margin: 10px 0 10px 10px;
 }
+
+.el-button+.el-button {
+  margin-left: 0px !important;
+}
