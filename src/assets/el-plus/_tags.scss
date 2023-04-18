@@ -1,7 +1,8 @@
 .el-tag {
-  background-color: #0a2348 !important;
+  background-color: rgba(63, 78, 105, 0.4) !important;
 
   &__content {
     font-size: 14px;
+    color: white;
   }
 }

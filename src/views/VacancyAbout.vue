@@ -67,7 +67,7 @@ const settings = {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 25px;
 
   &__content {
     display: flex;
@@ -75,7 +75,7 @@ const settings = {
     gap: 30px;
     width: 1080px;
     padding: 30px;
-    background-image: linear-gradient(to left bottom, #051937, #131a31, #1b1c2c, #1f1e26, #212121);
+    background-color: rgba(63, 78, 105, 0.4);
     border-radius: 10px;
   }
 

@@ -18,8 +18,8 @@ type TVacancySalary = {
 
 type TVacancyAddress = {
     city: string,
-    lat: number,
-    lng: number,
+    lat: number | undefined,
+    lng: number | undefined,
 }
 
 type TVacancyEmployer = {
