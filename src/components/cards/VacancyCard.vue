@@ -54,8 +54,7 @@ const publishedAt = ref(new Date(props.vacancy!.published_at));
   max-width: 655px;
   padding: 20px;
   margin: 20px;
-  background-image: linear-gradient(to left bottom, #051937, #131a31, #1b1c2c, #1f1e26, #212121);
-  border: 1px rgba(255, 255, 255, 0.1) solid;
+  background-color: rgba(63, 78, 105, 0.4);
   border-radius: 10px;
 
   &__info {

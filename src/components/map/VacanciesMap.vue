@@ -1,20 +1,22 @@
 <template>
   <div class="map">
-    <YandexMap :settings="settings" :coordinates="[55.040998, 82.917447]" >
-      <template v-for="vacancy in vacanciesStore.getVacancies">
-        <template v-if="vacancy?.address?.lat" :key="vacancy.id">
-          <YandexMarker
-              :properties="{ iconCaption: vacancy.name }"
-              :coordinates="[vacancy?.address?.lat, vacancy?.address?.lng]"
-              :marker-id="vacancy.id"
-          >
-            <template #component>
-              <VacancyBalloon :vacancy="vacancy"/>
-            </template>
-          </YandexMarker>
+    <template v-if="vacanciesStore.getVacancies">
+      <YandexMap :settings="settings" :coordinates="[55.040998, 82.917447]" >
+        <template v-for="vacancy in vacanciesStore.getVacancies">
+          <template v-if="vacancy.address?.lat && vacancy.address?.lng" :key="vacancy.id">
+            <YandexMarker
+                :properties="{ iconCaption: vacancy.name }"
+                :coordinates="[vacancy.address.lat, vacancy.address.lng]"
+                :marker-id="vacancy.id"
+            >
+              <template #component>
+                <VacancyBalloon :vacancy="vacancy"/>
+              </template>
+            </YandexMarker>
+          </template>
         </template>
-      </template>
-    </YandexMap>
+      </YandexMap>
+    </template>
   </div>
 </template>
 

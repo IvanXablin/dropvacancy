@@ -67,30 +67,25 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
 
 <template>
   <div class="auth-form">
-      <el-form
-          :rules="RulesForm"
-          :model="dataAuthForm"
-          ref="ruleFormRef"
-          :size="'large'"
-      >
-        <el-form-item prop="email">
-          <el-input v-model="dataAuthForm.email" placeholder="Почта" />
-        </el-form-item>
-        <el-form-item prop="password">
-          <el-input
-              v-model="dataAuthForm.password"
-              type="password"
-              placeholder="Пароль"
-              show-password
-          />
-        </el-form-item>
-        <el-form-item>
-          <p class="auth-form__link">Забыли пароль?</p>
-        </el-form-item>
-        <el-form-item>
-          <el-button @click="handleSubmitForm(ruleFormRef)" type="primary" round>Войти</el-button>
-        </el-form-item>
-      </el-form>
+    <el-form
+        :rules="RulesForm"
+        :model="dataAuthForm"
+        ref="ruleFormRef"
+        :size="'default'"
+    >
+      <el-form-item prop="email">
+        <el-input v-model="dataAuthForm.email" placeholder="Почта" />
+      </el-form-item>
+      <el-form-item prop="password">
+        <el-input
+            v-model="dataAuthForm.password"
+            type="password"
+            placeholder="Пароль"
+            show-password
+        />
+      </el-form-item>
+    </el-form>
+    <el-button @click="handleSubmitForm(ruleFormRef)" type="primary" round>Войти</el-button>
   </div>
 </template>
 
@@ -98,9 +93,8 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
 .auth-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
-  height: 100%;
+  height: auto;
 
   &__link {
     font-size: 14px;
@@ -116,7 +110,6 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
   .el-form {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
   }
 }
 </style>
