@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     AccountForm: typeof import('./src/components/forms/AccountForm.vue')['default']
     AuthForm: typeof import('./src/components/forms/AuthForm.vue')['default']
     Bar: typeof import('./src/components/charts/Bar.vue')['default']
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
     ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']

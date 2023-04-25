@@ -46,7 +46,6 @@ onMounted(async () => {
 <template>
   <div class="home-view">
     <div class="home-view__content">
-      <vacancy-filter/>
       <div style="width: 800px">
         <Bar :data="data" :options="options" />
       </div>
@@ -60,6 +59,7 @@ onMounted(async () => {
   justify-content: center;
   padding: 50px;
   min-width: 100%;
+  height: 100vh;
 
   &__content {
     display: flex;
