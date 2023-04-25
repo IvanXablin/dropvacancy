@@ -1,18 +1,27 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import {defineProps, onMounted, ref} from 'vue';
 import VacancyCard from '@/components/cards/VacancyCard.vue';
 import { useVacanciesStore } from '@/store/Vacancies.store';
 
+const props = defineProps({
+  isFavourites: Boolean,
+});
+
 const vacanciesStore = useVacanciesStore();
 const page = ref(1);
-
+const isFavourites = ref(props.isFavourites);
 const handleLoadVacancy = ():void => {
   page.value++;
   vacanciesStore.setPage(page.value);
 };
 
 onMounted( async ():Promise<void> => {
-  await vacanciesStore.setVacancies();
+  if (isFavourites.value){
+    await vacanciesStore.setFromStorageVacancies()
+  }
+  else {
+    await vacanciesStore.setVacancies();
+  }
 });
 </script>
 
@@ -20,22 +29,27 @@ onMounted( async ():Promise<void> => {
   <div class="vacancy-list">
     <el-scrollbar
         v-if="vacanciesStore.getVacancies"
-        height="750px"
+        height="1050px"
     >
       <div class="vacancy-list__content">
         <vacancy-card
             v-for="vacancy in vacanciesStore.getVacancies"
             :key="vacancy.id"
             :vacancy="vacancy"
+            :isFavourites="isFavourites"
+            @remove="(id) => vacanciesStore.removeVacancyById(id)"
         />
-        <hr class="vacancy-list__line">
-        <el-button
-            size="default"
-            type="primary"
-            @click="handleLoadVacancy"
-        >
-          Показать еще
-        </el-button>
+        <template v-if="!isFavourites">
+          <hr class="vacancy-list__line">
+          <el-button
+              size="default"
+              type="primary"
+              @click="handleLoadVacancy"
+          >
+            Показать еще
+          </el-button>
+        </template>
+
       </div>
     </el-scrollbar>
     <div
@@ -54,14 +68,14 @@ onMounted( async ():Promise<void> => {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  max-width: 730px;
+  max-width: 900px;
   width: 100%;
 
   &__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 700px;
+    max-width: 900px;
     width: 100%;
   }
 

@@ -1,23 +1,33 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import 'element-plus/theme-chalk/display.css';
+import Cookies from "js-cookie";
+import { useRouter } from 'vue-router';
 
 const drawer = ref(false);
+const router = useRouter();
 const handleOpenMenu = (): void => {
   drawer.value = true;
-}
+};
+
+const handleExitAccount = (): void => {
+  Cookies.remove('ACCESS_TOKEN_KEY');
+  Cookies.remove('ID');
+  router.push({ path: 'auth' })
+};
+
 </script>
 
 <template>
 <div class="header">
-  <router-link class="header__logo" to="/home">Dropvacancy</router-link>
+  <router-link class="header__logo" to="/home">DROPVACANCY</router-link>
   <el-row :gutter="10" class="hidden-sm-and-down">
     <el-col :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
       <div class="header__nav">
         <router-link class="header__link" to="/vacancies">Вакансии</router-link>
         <router-link class="header__link" to="/home">Аналитика</router-link>
-        <router-link class="header__link" to="/home">О нас</router-link>
-        <router-link class="header__link" to="/auth">Вход</router-link>
+        <router-link class="header__link" to="/favourites">Избранное</router-link>
+        <p class="header__link" @click="handleExitAccount">Выход</p>
       </div>
     </el-col>
   </el-row>
@@ -30,8 +40,8 @@ const handleOpenMenu = (): void => {
         <div class="menu">
           <router-link class="header__link" to="/vacancies">Вакансии</router-link>
           <router-link class="header__link" to="/home">Аналитика</router-link>
-          <router-link class="header__link" to="/home">О нас</router-link>
-          <router-link class="header__link" to="/auth">Вход</router-link>
+          <router-link class="header__link" to="/favourites">Избранное</router-link>
+          <p class="header__link" @click="handleExitAccount">Выход</p>
         </div>
       </el-drawer>
     </el-col>
@@ -64,6 +74,7 @@ const handleOpenMenu = (): void => {
     text-decoration: none;
     color: white;
     white-space: nowrap;
+    cursor: pointer;
 
     &:hover {
       color: rgba(206, 71, 92, 0.85);

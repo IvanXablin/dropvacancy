@@ -28,6 +28,11 @@ const router = createRouter({
           component: () => import('@/views/VacanciesView.vue'),
         },
         {
+          path: '/favourites',
+          name: 'FavouritesView',
+          component: () => import('@/views/FavouritesView.vue'),
+        },
+        {
           path: '/map',
           name: 'MapView',
           component: () => import('@/views/Map.vue'),

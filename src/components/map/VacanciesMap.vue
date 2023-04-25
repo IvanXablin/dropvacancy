@@ -2,19 +2,22 @@
   <div class="map">
     <template v-if="vacanciesStore.getVacancies">
       <YandexMap :settings="settings" :coordinates="[55.040998, 82.917447]" >
+        <YandexClusterer :options="{ preset: 'islands#nightClusterIcons' }">
         <template v-for="vacancy in vacanciesStore.getVacancies">
           <template v-if="vacancy.address?.lat && vacancy.address?.lng" :key="vacancy.id">
-            <YandexMarker
-                :properties="{ iconCaption: vacancy.name }"
-                :coordinates="[vacancy.address.lat, vacancy.address.lng]"
-                :marker-id="vacancy.id"
-            >
-              <template #component>
-                <VacancyBalloon :vacancy="vacancy"/>
-              </template>
-            </YandexMarker>
+
+              <YandexMarker
+                  :properties="{ iconCaption: vacancy.name }"
+                  :coordinates="[vacancy.address.lat, vacancy.address.lng]"
+                  :marker-id="vacancy.id"
+              >
+                <template #component>
+                  <VacancyBalloon :vacancy="vacancy"/>
+                </template>
+              </YandexMarker>
           </template>
         </template>
+        </YandexClusterer>
       </YandexMap>
     </template>
   </div>

@@ -8,8 +8,8 @@ import VacanciesPanel from "@/components/panels/VacanciesPanel.vue";
 <div class="vacancy-view">
   <vacancies-panel/>
   <div class="vacancy-view__content">
-    <vacancy-filter />
-    <vacancy-list/>
+    <vacancy-filter/>
+    <vacancy-list :is-favourites="false" />
   </div>
 </div>
 </template>

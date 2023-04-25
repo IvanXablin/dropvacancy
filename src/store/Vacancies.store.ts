@@ -10,6 +10,7 @@ interface State {
     salary: number | null;
     schedule: string | null;
     area: number | null;
+    orderBy: string | null;
     page: number;
 };
 
@@ -22,6 +23,7 @@ export const useVacanciesStore = defineStore('vacancies', {
         salary: null,
         schedule: null,
         area: null,
+        orderBy: null,
         page: 1,
     } as State),
     getters: {
@@ -55,6 +57,18 @@ export const useVacanciesStore = defineStore('vacancies', {
             this.vacancies = response.items;
             this.count = response.found;
         },
+        async setFromStorageVacancies() {
+            const storageVacancies: TVacancy[] = [];
+
+            for (let key in localStorage) {
+                if (!localStorage.hasOwnProperty(key)) {
+                    continue;
+                }
+                const [error, response] = await vacanciesApi.getVacancyById(key);
+                storageVacancies.push(response);
+            }
+            this.vacancies = storageVacancies;
+        },
         async setCountVacancies() {
             await this.setVacancies()
         },
@@ -73,6 +87,22 @@ export const useVacanciesStore = defineStore('vacancies', {
                 schedule: this.schedule,
                 area: this.area,
             };
+
+            const [error, response] = await vacanciesApi.getVacancies(params);
+            this.vacancies = response.items;
+            this.count = response.found;
+        },
+        async setOrderBy(option: string) {
+
+            this.orderBy = option;
+
+            const params = {
+                text: this.text,
+                page: 1,
+                area: 4,
+                orderBy: this.orderBy
+            };
+
             const [error, response] = await vacanciesApi.getVacancies(params);
             this.vacancies = response.items;
             this.count = response.found;
@@ -86,9 +116,12 @@ export const useVacanciesStore = defineStore('vacancies', {
                 salary: this.salary,
                 schedule: this.schedule,
                 area: this.area,
-            }
+            };
             const [error, response] = await vacanciesApi.getVacancies(params);
             response.items.forEach((vacancy: any) => this.vacancies.push(vacancy));
+        },
+        removeVacancyById(id: string) {
+           this.vacancies = this.vacancies.filter((vacancy: TVacancy) => vacancy.id !== id);
         }
     }
 });
