@@ -13,11 +13,6 @@ const router = createRouter({
       },
       children: [
         {
-          path: '/account',
-          name: 'AccountView',
-          component: () => import('@/views/AccountView.vue'),
-        },
-        {
           path: '/home',
           name: 'HomeView',
           component: () => import('@/views/HomeView.vue'),
@@ -41,12 +36,7 @@ const router = createRouter({
           path: '/vacancy/:id',
           name: 'AboutVacancy',
           component: () => import('@/views/VacancyAbout.vue'),
-        },
-        {
-          path: '/filterSettings',
-          name: 'filterSettings',
-          component: () => import('@/views/SettingFilterView.vue'),
-        },
+        }
       ],
     },
     {

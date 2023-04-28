@@ -3,8 +3,8 @@ import { onMounted, ref } from 'vue';
 import { useVacanciesStore } from '@/store/Vacancies.store';
 import { useRouter } from 'vue-router';
 import { Location, Star } from '@element-plus/icons-vue'
-import { optionsOrderBy } from "@/utils/OptionsOrderBy";
-import VacancyFilter from "@/components/filters/VacancyFilter.vue";
+import { optionsOrderBy } from '@/utils/OptionsOrderBy';
+import VacancyFilter from '@/components/VacancyFilter.vue';
 
 const vacanciesStore = useVacanciesStore();
 const router = useRouter();
@@ -51,7 +51,7 @@ const handleVacanciesOrderBy = (): void => {
         <el-button type="primary" :icon="Star" @click="handleRedirectToFavourites">
           Показать избранное
         </el-button>
-        <el-button @click="drawer = true">sas</el-button>
+        <el-button type="primary" @click="drawer = true">Фильтр</el-button>
       </div>
       <el-drawer
           v-model="drawer"
@@ -76,7 +76,7 @@ const handleVacanciesOrderBy = (): void => {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
     padding: 20px 50px;
     background-color: rgba(53, 76, 107, 0.10);
     border-radius: 10px;

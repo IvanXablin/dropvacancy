@@ -19,4 +19,4 @@ export const optionsOrderBy = [
         "id": "distance",
         "name": "по удалённости"
     }
-]
+];

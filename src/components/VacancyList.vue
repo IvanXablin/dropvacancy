@@ -49,15 +49,14 @@ onMounted( async ():Promise<void> => {
             Показать еще
           </el-button>
         </template>
-
       </div>
     </el-scrollbar>
     <div
+        v-else
         class="vacancy-list__loader"
         v-loading="true"
         element-loading-background="#7c7c7c26"
         element-loading-text="Загрузка..."
-        v-else
     >
     </div>
   </div>

@@ -3,9 +3,10 @@ import { useRoute } from "vue-router";
 import { onMounted, ref } from "vue";
 import { vacanciesApi } from "@/api/Vacancies.api";
 import { YandexMap, YandexMarker } from "vue-yandex-maps";
+import type {TVacancy} from "@/types/TVacancy";
 const route = useRoute();
 
-const vacancy = ref<any>(null);
+const vacancy = ref<TVacancy | null>(null);
 
 onMounted(async () => {
   const [error, response] = await vacanciesApi.getVacancyById(String(route.params.id))

@@ -12,6 +12,14 @@ export const specialtiesList = [
         label: 'Java',
     },
     {
+        value: 'C#',
+        label: 'C#',
+    },
+    {
+        value: '.NET',
+        label: '.NET',
+    },
+    {
         value: 'DevOps',
         label: 'DevOps',
     },
