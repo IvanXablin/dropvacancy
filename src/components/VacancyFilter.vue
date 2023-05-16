@@ -99,5 +99,9 @@ watch([specialty, income, city, level, schedule], () => {
     font-weight: bolder;
     margin-bottom: 10px;
   }
+
+  @media screen and (max-width: 678px) {
+    display: none;
+  }
 }
 </style>

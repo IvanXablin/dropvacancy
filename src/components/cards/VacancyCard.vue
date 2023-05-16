@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineProps, defineEmits, ref, onMounted, onUpdated, watch} from 'vue';
+import { defineProps, defineEmits, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { Star } from '@element-plus/icons-vue'
 import { ElNotification } from 'element-plus';
@@ -139,6 +139,10 @@ const handleRemoveVacancy = (): void => {
   &:hover {
     transition: 0.55s;
     transform: scale(1.01);
+  }
+
+  @media screen and (max-width: 678px) {
+    margin: 10px 0px
   }
 }
 </style>

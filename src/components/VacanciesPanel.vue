@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useVacanciesStore } from '@/store/Vacancies.store';
 import { useRouter } from 'vue-router';
-import { Location, Star } from '@element-plus/icons-vue'
+import { Location, Star, Expand } from '@element-plus/icons-vue'
 import { optionsOrderBy } from '@/utils/OptionsOrderBy';
 import VacancyFilter from '@/components/VacancyFilter.vue';
 
@@ -51,7 +51,9 @@ const handleVacanciesOrderBy = (): void => {
         <el-button type="primary" :icon="Star" @click="handleRedirectToFavourites">
           Показать избранное
         </el-button>
-        <el-button type="primary" @click="drawer = true">Фильтр</el-button>
+        <el-button type="primary" :icon="Expand" @click="drawer = true">
+          Показать фильтр
+        </el-button>
       </div>
       <el-drawer
           v-model="drawer"
@@ -82,6 +84,7 @@ const handleVacanciesOrderBy = (): void => {
     border-radius: 10px;
 
     @media screen and (max-width: 510px) {
+      margin: 10px;
       padding: 20px 10px;
       justify-content: center;
     }
@@ -93,6 +96,7 @@ const handleVacanciesOrderBy = (): void => {
     gap: 20px;
 
     @media screen and (max-width: 510px) {
+      flex-direction: column;
       justify-content: center;
     }
   }

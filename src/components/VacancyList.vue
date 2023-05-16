@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineProps, onMounted, ref} from 'vue';
+import { defineProps, onMounted, ref } from 'vue';
 import VacancyCard from '@/components/cards/VacancyCard.vue';
 import { useVacanciesStore } from '@/store/Vacancies.store';
 
@@ -10,12 +10,13 @@ const props = defineProps({
 const vacanciesStore = useVacanciesStore();
 const page = ref(1);
 const isFavourites = ref(props.isFavourites);
+
 const handleLoadVacancy = ():void => {
   page.value++;
   vacanciesStore.setPage(page.value);
 };
 
-onMounted( async ():Promise<void> => {
+onMounted(async ():Promise<void> => {
   if (isFavourites.value){
     await vacanciesStore.setFromStorageVacancies()
   }

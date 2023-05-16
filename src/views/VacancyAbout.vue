@@ -48,7 +48,7 @@ const settings = {
           </el-tag>
         </div>
       </template>
-      <template v-if="vacancy?.address?.lat">
+      <template v-if="vacancy?.address?.lat && vacancy?.address?.lng">
         <h2>Адрес</h2>
         <div class="vacancy-about__tags">
           <YandexMap :settings="settings" :coordinates="[vacancy?.address?.lat, vacancy?.address?.lng]" :zoom="18" >
@@ -78,6 +78,10 @@ const settings = {
     padding: 30px;
     background-color: rgba(63, 78, 105, 0.4);
     border-radius: 10px;
+
+    @media screen and (max-width: 768px) {
+      padding: 20px;
+    }
   }
 
   &__title {
@@ -91,6 +95,10 @@ const settings = {
     flex-direction: column;
     gap: 20px;
     padding: 15px;
+
+    @media screen and (max-width: 768px) {
+      padding: 0;
+    }
 
     strong {
       font-weight: bolder;
@@ -107,6 +115,11 @@ const settings = {
     flex-wrap: wrap;
     gap: 20px;
     padding: 10px;
+  }
+
+
+  @media screen and (max-width: 768px) {
+    padding: 7px;
   }
 }
 

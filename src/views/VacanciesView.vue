@@ -33,7 +33,7 @@ import VacanciesPanel from "@/components/VacanciesPanel.vue";
   }
 
   @media screen and (max-width: 678px) {
-    padding: 15px;
+    padding: 5px;
   }
 }
 </style>

@@ -1,0 +1,7 @@
+.el-scrollbar {
+    &__bar {
+        @media screen and (max-width: 678px) {
+            display: none;
+        }
+    }
+}
