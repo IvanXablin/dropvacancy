@@ -1,1 +1,1 @@
-export type AxiosResponseType<T> = Promise<[null, T] | [any]>
+export type AxiosResponseType<T> = Promise<[null, T] | [any]>;

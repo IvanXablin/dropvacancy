@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import VacanciesMap from "@/components/map/VacanciesMap.vue";
+import VacanciesMap from "@/components/VacanciesMap.vue";
 </script>
 
 <template>

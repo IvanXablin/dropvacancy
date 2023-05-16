@@ -12,8 +12,6 @@ const activeTab = ref('regist');
       <h1>Добро пожаловать на Dropvacancy!</h1>
       <p class="auth-view__info">Персональные подборки проверенных IT-вакансий</p>
       <p class="auth-view__info">Пройдите регистрацию и настройте фильтр по себя</p>
-      <hr />
-      <p class="auth-view__info">© Dropvacancy 2022-2023. Все права защищены.</p>
     </div>
     <div class="auth-view__forms">
       <el-tabs v-model="activeTab">
@@ -62,13 +60,6 @@ const activeTab = ref('regist');
   @media screen and (max-width: 810px) {
     flex-direction: column;
     gap: 30px;
-  }
-
-  hr {
-    border: none;
-    color: rgba(168, 168, 168, 0.25);
-    background-color: rgba(168, 168, 168, 0.25);
-    height: 2px;
   }
 }
 </style>

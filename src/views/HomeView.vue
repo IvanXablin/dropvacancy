@@ -12,7 +12,7 @@ import { Bar } from 'vue-chartjs'
 import { specialtiesList } from "@/utils/SpecialtiesList";
 import { vacanciesApi } from "@/api/Vacancies.api";
 import { onMounted, ref } from "vue";
-import VacancyFilter from "@/components/filters/VacancyFilter.vue";
+import VacancyFilter from "@/components/VacancyFilter.vue";
 
 const countVacancies = ref<any[]>([2000, 602, 703, 4343, 5455, 4600, 2121, 3000, 100, 6234, 210])
 

@@ -1,17 +1,20 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import {onMounted, ref, watch} from 'vue';
 import { useVacanciesStore } from '@/store/Vacancies.store';
 import { specialtiesList } from '@/utils/SpecialtiesList';
+import {vacanciesApi} from "@/api/Vacancies.api";
 
 const specialty = ref<string[]>([]);
+const cities = ref<any>([]);
 const income = ref<number>();
 const city = ref<string>();
 const level = ref<string>();
 const schedule = ref<string[]>();
 
+
 const vacanciesStore = useVacanciesStore();
 
-const handleChangeFilter = () => {
+const handleChangeFilter = (): void => {
   const optionsFilter = {
     text: specialty?.value.join(' OR '),
     schedule: schedule?.value,
@@ -22,7 +25,7 @@ const handleChangeFilter = () => {
 };
 
 watch([specialty, income, city, level, schedule], () => {
-  handleChangeFilter()
+  handleChangeFilter();
 });
 </script>
 
@@ -52,7 +55,6 @@ watch([specialty, income, city, level, schedule], () => {
       <div class="vacancy-filter__item">
         <p class="vacancy-filter__name">Уровень дохода</p>
         <el-radio-group v-model="income">
-          <el-radio :label="0">Не имеет значение</el-radio>
           <el-radio :label="25000">От 25000 руб</el-radio>
           <el-radio :label="85000">От 85000 руб</el-radio>
           <el-radio :label="150000">От 150 000 руб</el-radio>
@@ -96,6 +98,10 @@ watch([specialty, income, city, level, schedule], () => {
     font-size: 21px;
     font-weight: bolder;
     margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 678px) {
+    display: none;
   }
 }
 </style>

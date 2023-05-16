@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineProps, onMounted, ref} from 'vue';
+import { defineProps, onMounted, ref } from 'vue';
 import VacancyCard from '@/components/cards/VacancyCard.vue';
 import { useVacanciesStore } from '@/store/Vacancies.store';
 
@@ -10,12 +10,13 @@ const props = defineProps({
 const vacanciesStore = useVacanciesStore();
 const page = ref(1);
 const isFavourites = ref(props.isFavourites);
+
 const handleLoadVacancy = ():void => {
   page.value++;
   vacanciesStore.setPage(page.value);
 };
 
-onMounted( async ():Promise<void> => {
+onMounted(async ():Promise<void> => {
   if (isFavourites.value){
     await vacanciesStore.setFromStorageVacancies()
   }
@@ -49,15 +50,14 @@ onMounted( async ():Promise<void> => {
             Показать еще
           </el-button>
         </template>
-
       </div>
     </el-scrollbar>
     <div
+        v-else
         class="vacancy-list__loader"
         v-loading="true"
         element-loading-background="#7c7c7c26"
         element-loading-text="Загрузка..."
-        v-else
     >
     </div>
   </div>

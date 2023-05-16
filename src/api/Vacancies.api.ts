@@ -1,5 +1,5 @@
 import type { AxiosRequestConfig } from 'axios';
-import { AxiosService } from '@/api/AxiosService';
+import { AxiosService } from '@/utils/AxiosService';
 
 class VacanciesAPI extends AxiosService {
     constructor(config?: AxiosRequestConfig) {
@@ -16,6 +16,13 @@ class VacanciesAPI extends AxiosService {
         return this.axiosCall({
             method: 'get',
             url: `/vacancies/${id}?host=hh.ru`,
+        })
+    }
+
+    public getCities() {
+        return this.axiosCall({
+            method: 'get',
+            url: '/areas',
         })
     }
 }

@@ -40,12 +40,12 @@ declare module '@vue/runtime-core' {
     RegistForm: typeof import('./src/components/forms/RegistForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VacanciesMap: typeof import('./src/components/map/VacanciesMap.vue')['default']
-    VacanciesPanel: typeof import('./src/components/panels/VacanciesPanel.vue')['default']
+    VacanciesMap: typeof import('./src/components/VacanciesMap.vue')['default']
+    VacanciesPanel: typeof import('./src/components/VacanciesPanel.vue')['default']
     VacancyBalloon: typeof import('./src/components/cards/VacancyBalloon.vue')['default']
     VacancyCard: typeof import('./src/components/cards/VacancyCard.vue')['default']
-    VacancyFilter: typeof import('./src/components/filters/VacancyFilter.vue')['default']
-    VacancyList: typeof import('./src/components/lists/VacancyList.vue')['default']
+    VacancyFilter: typeof import('./src/components/VacancyFilter.vue')['default']
+    VacancyList: typeof import('./src/components/VacancyList.vue')['default']
   }
   export interface ComponentCustomProperties {
     vInfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']

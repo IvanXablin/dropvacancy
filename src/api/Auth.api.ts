@@ -1,5 +1,5 @@
 import type { AxiosRequestConfig } from 'axios';
-import { AxiosService } from '@/api/AxiosService';
+import { AxiosService } from '@/utils/AxiosService';
 import type { TUser } from '@/types/TUser';
 
 class AuthAPI extends AxiosService {

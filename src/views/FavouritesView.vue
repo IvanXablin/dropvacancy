@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import VacancyList from '@/components/lists/VacancyList.vue';
+import VacancyList from '@/components/VacancyList.vue';
 </script>
 
 <template>
