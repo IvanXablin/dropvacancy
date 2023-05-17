@@ -8,12 +8,16 @@ const activeTab = ref('regist');
 
 <template>
   <div class="auth-view">
-    <div class="auth-view__welcome">
-      <h1>Добро пожаловать на Dropvacancy!</h1>
-      <p class="auth-view__info">Персональные подборки проверенных IT-вакансий</p>
-      <p class="auth-view__info">Пройдите регистрацию и настройте фильтр по себя</p>
+    <div class="auth-header">
+      <router-link class="auth-header__logo" to="/home">
+        DROPVACANCY
+      </router-link>
     </div>
     <div class="auth-view__forms">
+      <div class="auth-view__welcome">
+        <h1>Добро пожаловать на Dropvacancy!</h1>
+        <p class="auth-view__info">Персональные подборки проверенных IT-вакансий</p>
+      </div>
       <el-tabs v-model="activeTab">
         <el-tab-pane label="Регистрация" name="regist">
           <regist-form/>
@@ -29,16 +33,35 @@ const activeTab = ref('regist');
 <style lang="scss" scoped>
 .auth-view {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: 100vh;
-  padding: 10px;
   gap: 50px;
+
+  .auth-header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 35px;
+    box-shadow: 1px 1px rgba(70, 70, 70, 0.2);
+
+    &__logo {
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 810px) {
+      box-shadow: none;
+    }
+  }
 
   &__welcome {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    margin-bottom: 20px;
+    gap: 20px;
     text-align: center;
     border-radius: 10px;
   }
@@ -59,6 +82,7 @@ const activeTab = ref('regist');
 
   @media screen and (max-width: 810px) {
     flex-direction: column;
+    padding: 10px;
     gap: 30px;
   }
 }

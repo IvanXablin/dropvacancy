@@ -30,7 +30,7 @@ const router = createRouter({
         {
           path: '/map',
           name: 'MapView',
-          component: () => import('@/views/Map.vue'),
+          component: () => import('@/views/VacanciesMap.vue'),
         },
         {
           path: '/vacancy/:id',
@@ -60,9 +60,10 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  const accessToken = Cookies.get('ACCESS_TOKEN_KEY');
-  if (to.name !== 'AuthView' && !accessToken) next({ name: 'AuthView' })
+  if (to.name !== 'AuthView' && !Cookies.get('ACCESS_TOKEN_KEY')) {
+    next({ name: 'AuthView' })
+  }
   else next();
-})
+});
 
 export default router;
