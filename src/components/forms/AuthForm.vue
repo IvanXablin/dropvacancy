@@ -2,7 +2,7 @@
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { authApi } from '@/api/Auth.api';
-import { ElMessage } from 'element-plus';
+import { ElNotification } from 'element-plus';
 import RulesForm from '@/utils/RulesForm';
 import type { TUser }  from '@/types/TUser';
 import type { FormInstance } from 'element-plus';
@@ -27,42 +27,42 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
       if (error) {
         if (Array.isArray(error.message)) {
           error.message.forEach((error: string) => {
-            ElMessage({
-              showClose: true,
-              message: error,
+            ElNotification({
+              title: error,
               type: 'error',
+              position: 'bottom-right',
             });
           });
         }
         else {
-          ElMessage({
-            showClose: true,
-            message: error.message,
-            type: 'error',
+          ElNotification({
+              title: error.message,
+              type: 'error',
+              position: 'bottom-right',
           });
         }
       }
 
       if (response) {
-        ElMessage({
-          message: 'Успех! Вы вошли!',
-          type: 'success',
+        ElNotification({
+            title: 'Успех! Вы вошли!',
+            type: 'success',
+            position: 'bottom-right',
         });
         Cookies.set('ID', response.user._id)
-        Cookies.set('ACCESS_TOKEN_KEY', response.accessToken)
+        Cookies.set('ACCESS_TOKEN_KEY', response.accessToken, { expires: 30 })
         await router.push({ path: '/vacancies' });
       }
     }
     else {
-      ElMessage({
-        showClose: true,
-        message: 'Заполните правильно форму!',
-        type: 'error',
+      ElNotification({
+          title: 'Заполните правильно форму!',
+          type: 'error',
+          position: 'bottom-right',
       });
     }
   });
 };
-
 </script>
 
 <template>
@@ -85,7 +85,13 @@ const handleSubmitForm = async (formEl: FormInstance | undefined):Promise<void> 
         />
       </el-form-item>
     </el-form>
-    <el-button @click="handleSubmitForm(ruleFormRef)" type="primary" round>Войти</el-button>
+    <el-button 
+      @click="handleSubmitForm(ruleFormRef)" 
+      type="primary" 
+      round
+    >
+      Войти
+    </el-button>
   </div>
 </template>
 
