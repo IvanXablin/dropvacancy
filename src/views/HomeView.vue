@@ -72,8 +72,7 @@ const optionsBar = {
   maintainAspectRatio: false,
     plugins: {
         legend: {
-            position: 'bottom',
-            display: false
+            display: false,
         },
     },
 };
