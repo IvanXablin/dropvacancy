@@ -19,6 +19,7 @@ const settings = {
 onMounted(async () => {
   if (Object.keys(route.query).length) {
     await vacanciesStore.setFilter(route.query);
+    await vacanciesStore.setVacanciesMap();
   }
   else {
     await vacanciesStore.setVacancies();
