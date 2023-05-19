@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import {onMounted, ref, watch} from 'vue';
+import {defineProps, ref, watch} from 'vue';
 import { useVacanciesStore } from '@/store/Vacancies.store';
 import { specialtiesList } from '@/utils/SpecialtiesList';
-import {vacanciesApi} from "@/api/Vacancies.api";
+
+const props = defineProps({
+    isDrawer: Boolean,
+});
 
 const specialty = ref<string[]>([]);
-const cities = ref<any>([]);
 const income = ref<number>();
 const city = ref<string>();
 const level = ref<string>();
 const schedule = ref<string[]>();
-
 
 const vacanciesStore = useVacanciesStore();
 
@@ -30,7 +31,7 @@ watch([specialty, income, city, level, schedule], () => {
 </script>
 
 <template>
-  <div class="vacancy-filter">
+  <div :class="isDrawer ? 'vacancy-filter-draw' : 'vacancy-filter'">
     <el-scrollbar height="700px">
       <div class="vacancy-filter__item">
         <p class="vacancy-filter__name">Специализация</p>
@@ -102,6 +103,23 @@ watch([specialty, income, city, level, schedule], () => {
 
   @media screen and (max-width: 678px) {
     display: none;
+  }
+}
+
+.vacancy-filter-draw {
+  width: 300px;
+  padding: 20px;
+  margin: 10px;
+
+  .vacancy-filter__item {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .vacancy-filter__name {
+    font-size: 21px;
+    font-weight: bolder;
+    margin-bottom: 10px;
   }
 }
 </style>

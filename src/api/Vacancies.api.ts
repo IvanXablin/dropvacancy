@@ -9,20 +9,19 @@ class VacanciesAPI extends AxiosService {
         return this.axiosCall({
             method: 'get',
             url: '/vacancies',
-            params: params
+            params: params,
+            headers: {
+                Authorization: `Bearer USERLGQ8MSCQNPKE3EJ182UG168QAS9LPN3DVAN5LVA5949TOJG3JUOQ3D393RIC`,
+            }
         })
     }
     public getVacancyById(id: string) {
         return this.axiosCall({
             method: 'get',
             url: `/vacancies/${id}?host=hh.ru`,
-        })
-    }
-
-    public getCities() {
-        return this.axiosCall({
-            method: 'get',
-            url: '/areas',
+            headers: {
+                Authorization: `Bearer USERLGQ8MSCQNPKE3EJ182UG168QAS9LPN3DVAN5LVA5949TOJG3JUOQ3D393RIC`,
+            }
         })
     }
 }
@@ -31,3 +30,4 @@ export const vacanciesApi = new VacanciesAPI({
     baseURL: 'https://api.hh.ru',
     withCredentials: false,
 });
+

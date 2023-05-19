@@ -5,48 +5,108 @@ import {
   Tooltip,
   Legend,
   BarElement,
+  ArcElement,
   CategoryScale,
   LinearScale
 } from 'chart.js'
-import { Bar } from 'vue-chartjs'
+import { Bar, Pie } from 'vue-chartjs'
 import { specialtiesList } from "@/utils/SpecialtiesList";
-import { vacanciesApi } from "@/api/Vacancies.api";
-import { onMounted, ref } from "vue";
+import { companiesList } from "@/utils/CompaniesList";
+import { computed, onMounted, ref } from "vue";
+import axios from "axios";
 
-const countVacancies = ref<any[]>([2000, 602, 703, 4343, 5455, 4600, 2121, 3000, 100, 6234, 210])
+const countVacancies = ref<any[]>([])
+const countCompanyVacancies = ref<number[]>([])
+const isLoading = ref(false)
 
-const data = ref<any>({
+onMounted(async () => {
+    isLoading.value = true
+    let temp: number[] = [];
+
+    for (let company of companiesList) {
+        const res = await axios.get(company.url, {
+            headers: {
+                Authorization: `Bearer USERLGQ8MSCQNPKE3EJ182UG168QAS9LPN3DVAN5LVA5949TOJG3JUOQ3D393RIC`,
+            }
+        });
+        temp.push(res.data?.open_vacancies);
+    }
+    countCompanyVacancies.value = [...temp]
+
+    temp = []
+
+    for (let spec of specialtiesList) {
+        const res = await axios.get(spec.url, {
+            headers: {
+                Authorization: `Bearer USERLGQ8MSCQNPKE3EJ182UG168QAS9LPN3DVAN5LVA5949TOJG3JUOQ3D393RIC`,
+            }
+        });
+        temp.push(res.data?.found);
+    }
+    countVacancies.value = [...temp]
+    isLoading.value = false
+});
+
+const specialtiesData = computed<any>(() => ({
   labels: specialtiesList.map((s: any) => s.label),
   datasets: [
     {
-      label: 'Самая популярная специализация',
-      backgroundColor: '#007eff',
+      backgroundColor: specialtiesList.map((s: any) => s.color),
       data: countVacancies.value
     }
   ]
-})
+}));
 
-const options = {
+const companyData = computed<any>(() => ({
+    labels: companiesList.map((s: any) => s.label),
+    datasets: [
+        {
+            backgroundColor: companiesList.map((s: any) => s.color),
+            data: countCompanyVacancies.value
+        }
+    ]
+}));
+
+const optionsBar = {
   responsive: true,
-  maintainAspectRatio: false
-}
+  maintainAspectRatio: false,
+    plugins: {
+        legend: {
+            position: 'bottom',
+            display: false
+        },
+    },
+};
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
+const optionsPie = {
+    responsive: true,
+    maintainAspectRatio: false
+};
 
-onMounted(async () => {
-  const params = {
-    text: 'Frontend'
-  }
-  const [error, response] = await vacanciesApi.getVacancies(params);
-  countVacancies.value = [response.found]
-})
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 </script>
 
 <template>
   <div class="home-view">
-    <div class="home-view__content">
-      <div style="width: 800px">
-        <Bar :data="data" :options="options" />
+   <div
+     v-if="isLoading"
+     class="loader"
+     v-loading="isLoading"
+     element-loading-background="#7c7c7c26"
+   >
+  </div>
+    <div v-else class="home-view__content">
+      <div class="bars">
+          <h4>Самая популярная специализация на сегодняшний день</h4>
+          <div class="bar">
+              <Bar :data="specialtiesData" :options="optionsBar" />
+          </div>
+          <hr>
+          <h4>Количество открытых вакансий у популярных IT компаний в России</h4>
+          <div class="bar">
+              <Pie :data="companyData" :options="optionsPie" />
+          </div>
+          <hr>
       </div>
     </div>
   </div>
@@ -56,13 +116,34 @@ onMounted(async () => {
 .home-view {
   display: flex;
   justify-content: center;
-  padding: 50px;
+  padding: 15px;
   min-width: 100%;
-  height: 100vh;
 
   &__content {
     display: flex;
     justify-content: center;
+  }
+
+  .bars {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .bar {
+    width: 100%;
+    height: auto;
+  }
+
+  hr {
+    opacity: 0.2;
+    margin-bottom: 10px;
+  }
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 }
 </style>

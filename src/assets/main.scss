@@ -22,6 +22,8 @@ html,body {
   color: white;
   background-image: linear-gradient(to right bottom, #050505, #06040e, #080315, #09021a, #0b011f);
   background-attachment: fixed;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
 
   &::-webkit-scrollbar {
     width: 7px;

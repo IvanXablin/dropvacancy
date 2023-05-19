@@ -53,13 +53,16 @@ onMounted(async ():Promise<void> => {
       </div>
     </el-scrollbar>
     <div
-        v-else
+        v-if="!vacanciesStore.getCountVacancies"
         class="vacancy-list__loader"
         v-loading="true"
         element-loading-background="#7c7c7c26"
         element-loading-text="Загрузка..."
     >
     </div>
+      <div v-if="vacanciesStore.getCountVacancies < 0" class="vacancy-list__empty">
+        <el-empty description="Вакансии отсутствуют!"/>
+      </div>
   </div>
 </template>
 
@@ -90,6 +93,14 @@ onMounted(async ():Promise<void> => {
     align-items: center;
     width: 100%;
     height: 750px;
+  }
+
+  &__empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 350px;
   }
 }
 </style>
