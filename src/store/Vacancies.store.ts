@@ -22,10 +22,11 @@ export const useVacanciesStore = defineStore('vacancies', {
         text: 'Разработчик AND Программист',
         salary: null,
         schedule: null,
-        area: null,
+        area: 1,
         orderBy: null,
         page: 1,
     } as State),
+
     getters: {
         getVacancies(state) {
             if (!state.vacancies.length) {
@@ -53,11 +54,31 @@ export const useVacanciesStore = defineStore('vacancies', {
             const params = {
                 text: this.text,
                 page: this.page,
-                area: 1
+                area: this.area,
+                salary: this.salary,
+                schedule: this.schedule,
+                orderBy: this.orderBy,
             };
             const [error, response] = await vacanciesApi.getVacancies(params);
             this.vacancies = response.items;
             this.count = response.found;
+        },
+
+        async setVacanciesMap() {
+            const params = {
+                text: this.text,
+                area: this.area,
+                salary: this.salary,
+                schedule: this.schedule,
+                orderBy: this.orderBy,
+            };
+
+            if (this.page > 1) {
+              for (let i = 0; i < this.page; i++) {
+                const [error, response] = await vacanciesApi.getVacancies(params);
+                response.items.forEach((vacancy: any) => this.vacancies.push(vacancy));
+              }
+            }
         },
 
         async setFromStorageVacancies() {
@@ -80,17 +101,18 @@ export const useVacanciesStore = defineStore('vacancies', {
         async setFilter(optionsFilter: any) {
             this.optionFilters = optionsFilter;
 
-            this.text = optionsFilter.text;
+            this.text = optionsFilter.text || 'Разработчик AND Программист';
             this.salary = optionsFilter.salary;
             this.schedule = optionsFilter.schedule;
             this.area = optionsFilter.area;
 
             const params = {
                 text: this.text,
-                page: 1,
+                page: this.page,
                 salary: this.salary,
                 schedule: this.schedule,
                 area: this.area,
+                orderBy: this.orderBy,
             };
 
             const [error, response] = await vacanciesApi.getVacancies(params);
@@ -104,9 +126,11 @@ export const useVacanciesStore = defineStore('vacancies', {
 
             const params = {
                 text: this.text,
-                page: 1,
-                area: 4,
-                orderBy: this.orderBy
+                page: this.page,
+                area: this.area,
+                salary: this.salary,
+                schedule: this.schedule,
+                orderBy: this.orderBy,
             };
 
             const [error, response] = await vacanciesApi.getVacancies(params);
@@ -123,6 +147,7 @@ export const useVacanciesStore = defineStore('vacancies', {
                 salary: this.salary,
                 schedule: this.schedule,
                 area: this.area,
+                orderBy: this.orderBy,
             };
             const [error, response] = await vacanciesApi.getVacancies(params);
             response.items.forEach((vacancy: any) => this.vacancies.push(vacancy));
