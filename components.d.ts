@@ -7,16 +7,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AccountForm: typeof import('./src/components/forms/AccountForm.vue')['default']
     AuthForm: typeof import('./src/components/forms/AuthForm.vue')['default']
-    Bar: typeof import('./src/components/charts/Bar.vue')['default']
-    ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
-    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
-    ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
     ElCol: typeof import('element-plus/es')['ElCol']
-    ElCollapse: typeof import('element-plus/es')['ElCollapse']
-    ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElForm: typeof import('element-plus/es')['ElForm']
@@ -24,17 +17,13 @@ declare module '@vue/runtime-core' {
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElOption: typeof import('element-plus/es')['ElOption']
-    ElProgress: typeof import('element-plus/es')['ElProgress']
     ElRadio: typeof import('element-plus/es')['ElRadio']
     ElRadioGroup: typeof import('element-plus/es')['ElRadioGroup']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSelect: typeof import('element-plus/es')['ElSelect']
-    ElSlider: typeof import('element-plus/es')['ElSlider']
-    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
-    ElTag: typeof import('element-plus/es')['ElTag']
     FooterComponent: typeof import('./src/components/layout/FooterComponent.vue')['default']
     HeaderComponent: typeof import('./src/components/layout/HeaderComponent.vue')['default']
     RegistForm: typeof import('./src/components/forms/RegistForm.vue')['default']
@@ -48,7 +37,6 @@ declare module '@vue/runtime-core' {
     VacancyList: typeof import('./src/components/VacancyList.vue')['default']
   }
   export interface ComponentCustomProperties {
-    vInfiniteScroll: typeof import('element-plus/es')['ElInfiniteScroll']
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']
   }
 }

@@ -61,7 +61,7 @@ const handleVacanciesOrderBy = (): void => {
           :direction="'ttb'"
           :size="'100%'"
       >
-        <vacancy-filter/>
+        <vacancy-filter :is-drawer="true" />
       </el-drawer>
     </div>
   </div>

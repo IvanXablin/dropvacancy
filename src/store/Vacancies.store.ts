@@ -92,6 +92,7 @@ export const useVacanciesStore = defineStore('vacancies', {
                 storageVacancies.push(response);
             }
             this.vacancies = storageVacancies;
+            this.count = -1;
         },
 
         async setCountVacancies() {
