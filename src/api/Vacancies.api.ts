@@ -9,19 +9,13 @@ class VacanciesAPI extends AxiosService {
         return this.axiosCall({
             method: 'get',
             url: '/vacancies',
-            params: params,
-            headers: {
-                Authorization: `Bearer USERLGQ8MSCQNPKE3EJ182UG168QAS9LPN3DVAN5LVA5949TOJG3JUOQ3D393RIC`,
-            }
+            params: params
         })
     }
     public getVacancyById(id: string) {
         return this.axiosCall({
             method: 'get',
-            url: `/vacancies/${id}?host=hh.ru`,
-            headers: {
-                Authorization: `Bearer USERLGQ8MSCQNPKE3EJ182UG168QAS9LPN3DVAN5LVA5949TOJG3JUOQ3D393RIC`,
-            }
+            url: `/vacancies/${id}?host=hh.ru`
         })
     }
 }
