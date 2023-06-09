@@ -24,11 +24,7 @@ onMounted(async () => {
     let temp: number[] = [];
 
     for (let company of companiesList) {
-        const res = await axios.get(company.url, {
-            headers: {
-                Authorization: `Bearer USERLGQ8MSCQNPKE3EJ182UG168QAS9LPN3DVAN5LVA5949TOJG3JUOQ3D393RIC`,
-            }
-        });
+        const res = await axios.get(company.url);
         temp.push(res.data?.open_vacancies);
     }
     countCompanyVacancies.value = [...temp]
@@ -36,11 +32,7 @@ onMounted(async () => {
     temp = []
 
     for (let spec of specialtiesList) {
-        const res = await axios.get(spec.url, {
-            headers: {
-                Authorization: `Bearer USERLGQ8MSCQNPKE3EJ182UG168QAS9LPN3DVAN5LVA5949TOJG3JUOQ3D393RIC`,
-            }
-        });
+        const res = await axios.get(spec.url);
         temp.push(res.data?.found);
     }
     countVacancies.value = [...temp]
