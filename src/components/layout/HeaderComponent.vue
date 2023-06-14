@@ -38,9 +38,9 @@ const handleExitAccount = (): void => {
       </el-icon>
       <el-drawer v-model="drawer" title="" size="100%">
         <div class="menu">
-          <router-link class="header__link" to="/vacancies">Вакансии</router-link>
-          <router-link class="header__link" to="/home">Аналитика</router-link>
-          <router-link class="header__link" to="/favourites">Избранное</router-link>
+          <router-link class="header__link" to="/vacancies" @click="drawer = false">Вакансии</router-link>
+          <router-link class="header__link" to="/home" @click="drawer = false">Аналитика</router-link>
+          <router-link class="header__link" to="/favourites" @click="drawer = false">Избранное</router-link>
           <p class="header__link" @click="handleExitAccount">Выход</p>
         </div>
       </el-drawer>

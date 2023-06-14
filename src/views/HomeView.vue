@@ -88,16 +88,14 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,
   </div>
     <div v-else class="home-view__content">
       <div class="bars">
-          <h4>Самая популярная специализация на сегодняшний день</h4>
+          <h3>Самая популярная специализация на сегодняшний день</h3>
           <div class="bar">
               <Bar :data="specialtiesData" :options="optionsBar" />
           </div>
-          <hr>
-          <h4>Количество открытых вакансий у популярных IT компаний в России</h4>
+          <h3>Количество открытых вакансий у популярных IT компаний в России</h3>
           <div class="bar">
               <Pie :data="companyData" :options="optionsPie" />
           </div>
-          <hr>
       </div>
     </div>
   </div>
@@ -108,28 +106,27 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,
   display: flex;
   justify-content: center;
   padding: 15px;
-  min-width: 100%;
 
   &__content {
     display: flex;
     justify-content: center;
+    width: 100%;
+    max-width: calc(100vh - 24px);
   }
 
   .bars {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     gap: 50px;
+    width: 100%;
   }
 
   .bar {
     width: 100%;
-    height: auto;
+    height: 430px;
   }
 
-  hr {
-    opacity: 0.2;
-    margin-bottom: 10px;
-  }
   .loader {
     display: flex;
     justify-content: center;

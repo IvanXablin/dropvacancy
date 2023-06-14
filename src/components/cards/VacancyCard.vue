@@ -92,7 +92,7 @@ const handleRemoveVacancy = (): void => {
           В избраное
         </el-button>
       </div>
-      <p class="vacancy-card__date">{{ publishedAt.toLocaleDateString() }}</p>
+      <p class="vacancy-card__date">Опубликовано: {{ publishedAt.toLocaleDateString() }}</p>
     </div>
   </div>
 </template>
@@ -102,7 +102,7 @@ const handleRemoveVacancy = (): void => {
   max-width: 855px;
   padding: 20px;
   margin: 20px;
-  background-color: rgba(63, 78, 105, 0.4);
+  background-image: linear-gradient(136.68deg, #35436a 23.51%, #1e2b4e 87.44%);
   border-radius: 10px;
 
   &__logo {
@@ -116,6 +116,7 @@ const handleRemoveVacancy = (): void => {
   }
 
   &__date {
+    text-align: left;
     color: #bebebe;
   }
 

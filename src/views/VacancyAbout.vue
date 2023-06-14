@@ -26,7 +26,10 @@ const settings = {
   <div class="vacancy-about">
     <div class="vacancy-about__content">
       <div class="vacancy-about__title">
-        <h1>{{ vacancy?.name }}</h1>
+        <div class="title-content">
+          <h1>{{ vacancy?.name }}</h1>
+          <img :src="vacancy?.employer?.logo_urls?.original" alt="" />
+        </div>
         <h3 v-if="vacancy?.salary?.from">от {{ vacancy?.salary?.from }} руб. на руки</h3>
         <p>Требуемый опыт работы: {{ vacancy?.experience?.name }}</p>
         <p>Тип занятости: {{ vacancy?.employment?.name }}</p>
@@ -88,6 +91,17 @@ const settings = {
     display: flex;
     flex-direction: column;
     gap: 25px;
+
+    .title-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      img {
+        width: 50px;
+      }
+    }
   }
 
   &__description {
@@ -116,7 +130,6 @@ const settings = {
     gap: 20px;
     padding: 10px;
   }
-
 
   @media screen and (max-width: 768px) {
     padding: 7px;
