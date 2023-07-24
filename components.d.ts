@@ -7,7 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    AuthForm: typeof import('./src/components/forms/AuthForm.vue')['default']
+    AuthForm: typeof import('./src/widgets/forms/AuthForm.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
@@ -25,17 +25,17 @@ declare module '@vue/runtime-core' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
-    FooterComponent: typeof import('./src/components/layout/FooterComponent.vue')['default']
-    HeaderComponent: typeof import('./src/components/layout/HeaderComponent.vue')['default']
-    RegistForm: typeof import('./src/components/forms/RegistForm.vue')['default']
+    FooterComponent: typeof import('./src/app/layout/FooterComponent.vue')['default']
+    HeaderComponent: typeof import('./src/app/layout/HeaderComponent.vue')['default']
+    RegistForm: typeof import('./src/widgets/forms/RegistForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VacanciesMap: typeof import('./src/components/VacanciesMap.vue')['default']
-    VacanciesPanel: typeof import('./src/components/VacanciesPanel.vue')['default']
-    VacancyBalloon: typeof import('./src/components/cards/VacancyBalloon.vue')['default']
-    VacancyCard: typeof import('./src/components/cards/VacancyCard.vue')['default']
-    VacancyFilter: typeof import('./src/components/VacancyFilter.vue')['default']
-    VacancyList: typeof import('./src/components/VacancyList.vue')['default']
+    VacanciesMap: typeof import('./src/widgets/VacanciesMap.vue')['default']
+    VacanciesPanel: typeof import('./src/widgets/VacanciesPanel.vue')['default']
+    VacancyBalloon: typeof import('./src/entities/vacancy/ui/vacancy-balloon.vue')['default']
+    VacancyCard: typeof import('./src/entities/vacancy/ui/vacancy-card.vue')['default']
+    VacancyFilter: typeof import('./src/widgets/VacancyFilter.vue')['default']
+    VacancyList: typeof import('./src/widgets/VacancyList.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

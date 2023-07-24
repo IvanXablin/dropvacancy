@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import VacancyList from '@/components/VacancyList.vue';
-import VacancyFilter from '@/components/VacancyFilter.vue';
-import VacanciesPanel from "@/components/VacanciesPanel.vue";
+import VacancyList from '@/widgets/VacancyList.vue';
+import VacancyFilter from '@/widgets/VacancyFilter.vue';
+import VacanciesPanel from "@/widgets/VacanciesPanel.vue";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import HeaderComponent from '@/components/layout/HeaderComponent.vue';
-import FooterComponent from '@/components/layout/FooterComponent.vue';
+import HeaderComponent from '@/app/layout/HeaderComponent.vue';
+import FooterComponent from '@/app/layout/FooterComponent.vue';
 </script>
 
 <template>

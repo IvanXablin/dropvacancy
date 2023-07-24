@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useVacanciesStore } from '@/shared/store/Vacancies.store';
+import { useVacanciesStore } from '@/entities/vacancy/model/vacancy-store';
 import { useRouter } from 'vue-router';
 import { Location, Star, Expand } from '@element-plus/icons-vue'
-import { optionsOrderBy } from '@/shared/utils/OptionsOrderBy';
-import VacancyFilter from '@/components/VacancyFilter.vue';
+import { optionsOrderBy } from '@/shared/constants/OptionsOrderBy';
+import VacancyFilter from '@/widgets/VacancyFilter.vue';
 
 const vacanciesStore = useVacanciesStore();
 const router = useRouter();

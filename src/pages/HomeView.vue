@@ -10,8 +10,8 @@ import {
   LinearScale
 } from 'chart.js'
 import { Bar, Pie } from 'vue-chartjs'
-import { specialtiesList } from "@/shared/utils/SpecialtiesList";
-import { companiesList } from "@/shared/utils/CompaniesList";
+import { specialtiesList } from "@/shared/constants/SpecialtiesList";
+import { companiesList } from "@/shared/constants/CompaniesList";
 import { computed, onMounted, ref } from "vue";
 import axios from "axios";
 

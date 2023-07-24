@@ -2,7 +2,7 @@ import type { AxiosRequestConfig } from 'axios';
 import { AxiosService } from '@/shared/utils/AxiosService';
 import type { TUser } from '@/shared/types/TUser';
 
-class AuthAPI extends AxiosService {
+class UserApi extends AxiosService {
     constructor(config?: AxiosRequestConfig) {
         super(config);
     }
@@ -35,7 +35,7 @@ class AuthAPI extends AxiosService {
     }
 }
 
-export const authApi = new AuthAPI({
+export const authApi = new UserApi({
     baseURL: 'https://api.dropvacancy.ru/',
     withCredentials: true,
 });

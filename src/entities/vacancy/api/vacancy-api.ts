@@ -1,7 +1,7 @@
 import type { AxiosRequestConfig } from 'axios';
 import { AxiosService } from '@/shared/utils/AxiosService';
 
-class VacanciesAPI extends AxiosService {
+class VacancyApi extends AxiosService {
     constructor(config?: AxiosRequestConfig) {
         super(config);
     }
@@ -20,7 +20,7 @@ class VacanciesAPI extends AxiosService {
     }
 }
 
-export const vacanciesApi = new VacanciesAPI({
+export const vacanciesApi = new VacancyApi({
     baseURL: 'https://api.hh.ru',
     withCredentials: false,
 });

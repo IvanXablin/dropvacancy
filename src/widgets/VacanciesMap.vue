@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { YandexClusterer, YandexMap, YandexMarker } from 'vue-yandex-maps'
 import { onMounted } from 'vue';
-import { useVacanciesStore } from '@/shared/store/Vacancies.store';
-import VacancyBalloon from '@/components/cards/VacancyBalloon.vue';
+import { useVacanciesStore } from '@/entities/vacancy/model/vacancy-store';
+import VacancyBalloon from '@/entities/vacancy/ui/vacancy-balloon.vue';
 import { useRoute } from 'vue-router';
 
 const vacanciesStore = useVacanciesStore();

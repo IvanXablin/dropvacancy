@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import RegistForm from '@/components/forms/RegistForm.vue';
-import AuthForm from '@/components/forms/AuthForm.vue';
+import RegistForm from '@/widgets/forms/RegistForm.vue';
+import AuthForm from '@/widgets/forms/AuthForm.vue';
 import { ref } from 'vue';
 
 const activeTab = ref('regist');

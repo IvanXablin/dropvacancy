@@ -15,34 +15,34 @@ const router = createRouter({
         {
           path: '/home',
           name: 'HomeView',
-          component: () => import('@/views/HomeView.vue'),
+          component: () => import('@/pages/HomeView.vue'),
         },
         {
           path: '/vacancies',
           name: 'VacanciesView',
-          component: () => import('@/views/VacanciesView.vue'),
+          component: () => import('@/pages/VacanciesView.vue'),
         },
         {
           path: '/favourites',
           name: 'FavouritesView',
-          component: () => import('@/views/FavouritesView.vue'),
+          component: () => import('@/pages/FavouritesView.vue'),
         },
         {
           path: '/map',
           name: 'MapView',
-          component: () => import('@/views/VacanciesMap.vue'),
+          component: () => import('@/pages/VacanciesMap.vue'),
         },
         {
           path: '/vacancy/:id',
           name: 'AboutVacancy',
-          component: () => import('@/views/VacancyAbout.vue'),
+          component: () => import('@/pages/VacancyAbout.vue'),
         }
       ],
     },
     {
       path: '/auth',
       name: 'AuthView',
-      component: () => import('@/views/AuthView.vue'),
+      component: () => import('@/pages/AuthView.vue'),
     },
     {
       path: '/:pathMatch(.*)*',
@@ -54,7 +54,7 @@ const router = createRouter({
     {
       path: '/404',
       name: '404',
-      component: () => import('@/views/404.vue'),
+      component: () => import('@/pages/404.vue'),
     },
   ]
 });

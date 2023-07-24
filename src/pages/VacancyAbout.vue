@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { onMounted, ref } from "vue";
-import { vacanciesApi } from "@/shared/api/Vacancies.api";
+import { vacanciesApi } from "@/entities/vacancy/api/vacancy-api";
 import { YandexMap, YandexMarker } from "vue-yandex-maps";
 import type {TVacancy} from "@/shared/types/TVacancy";
 const route = useRoute();
