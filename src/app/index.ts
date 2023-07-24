@@ -1,12 +1,12 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
-import App from './App.vue';
-import router from './router';
+import App from './index.vue';
+import router from './providers/router';
 import ElementPlus from 'element-plus';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import 'element-plus/dist/index.css';
-import '@/assets/index.scss';
+import '@/app/index.scss';
 
 import YmapPlugin from 'vue-yandex-maps';
 

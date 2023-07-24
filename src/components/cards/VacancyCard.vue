@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { Star } from '@element-plus/icons-vue'
 import { ElNotification } from 'element-plus';
 import type { PropType } from 'vue'
-import type { TVacancy } from '@/types/TVacancy';
+import type { TVacancy } from '@/shared/types/TVacancy';
 
 const props = defineProps({
   vacancy: Object as PropType<TVacancy>,

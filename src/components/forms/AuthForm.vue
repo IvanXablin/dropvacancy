@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import { authApi } from '@/api/Auth.api';
+import { authApi } from '@/shared/api/Auth.api';
 import { ElNotification } from 'element-plus';
-import RulesForm from '@/utils/RulesForm';
-import type { TUser }  from '@/types/TUser';
+import RulesForm from '@/shared/utils/RulesForm';
+import type { TUser }  from '@/shared/types/TUser';
 import type { FormInstance } from 'element-plus';
 import Cookies from "js-cookie";
 

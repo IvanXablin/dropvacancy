@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
-import { vacanciesApi } from '@/api/Vacancies.api';
-import type { TVacancy } from '@/types/TVacancy';
+import { vacanciesApi } from '@/shared/api/Vacancies.api';
+import type { TVacancy } from '@/shared/types/TVacancy';
 
 interface State {
     vacancies: TVacancy[];

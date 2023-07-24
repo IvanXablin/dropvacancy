@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useVacanciesStore } from '@/store/Vacancies.store';
+import { useVacanciesStore } from '@/shared/store/Vacancies.store';
 import { useRouter } from 'vue-router';
 import { Location, Star, Expand } from '@element-plus/icons-vue'
-import { optionsOrderBy } from '@/utils/OptionsOrderBy';
+import { optionsOrderBy } from '@/shared/utils/OptionsOrderBy';
 import VacancyFilter from '@/components/VacancyFilter.vue';
 
 const vacanciesStore = useVacanciesStore();

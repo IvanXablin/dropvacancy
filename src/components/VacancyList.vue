@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps, onMounted, ref } from 'vue';
 import VacancyCard from '@/components/cards/VacancyCard.vue';
-import { useVacanciesStore } from '@/store/Vacancies.store';
+import { useVacanciesStore } from '@/shared/store/Vacancies.store';
 
 const props = defineProps({
   isFavourites: Boolean,

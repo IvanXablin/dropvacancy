@@ -1,5 +1,5 @@
 import type { AxiosRequestConfig } from 'axios';
-import { AxiosService } from '@/utils/AxiosService';
+import { AxiosService } from '@/shared/utils/AxiosService';
 
 class VacanciesAPI extends AxiosService {
     constructor(config?: AxiosRequestConfig) {

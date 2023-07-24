@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig } from 'axios';
-import { AxiosService } from '@/utils/AxiosService';
-import type { TUser } from '@/types/TUser';
+import { AxiosService } from '@/shared/utils/AxiosService';
+import type { TUser } from '@/shared/types/TUser';
 
 class AuthAPI extends AxiosService {
     constructor(config?: AxiosRequestConfig) {

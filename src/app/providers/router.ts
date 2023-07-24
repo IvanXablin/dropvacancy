@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('@/layout/Layout.vue'),
+      component: () => import('@/app/layout/Layout.vue'),
       name: 'Layout',
       redirect: {
         name: 'VacanciesView',

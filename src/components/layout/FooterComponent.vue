@@ -3,7 +3,7 @@
   <p class="footer__warning">© Dropvacancy 2022-2023. Все права защищены.</p>
   <div class="footer__links">
     <a target="_blank" href="https://github.com/IvanXablin">
-      <img class="footer__logo" src="../../assets/images/github-mark-white.svg" alt="" />
+      <img class="footer__logo" src="../../app/assets/images/github-mark-white.svg" alt="" />
     </a>
     <a target="_blank" href="https://vk.com/xab_xab">
       <img class="footer__logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/VK_Compact_Logo_%282021-present%29.svg" alt="" />

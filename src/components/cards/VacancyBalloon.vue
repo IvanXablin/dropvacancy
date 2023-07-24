@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 import type { PropType } from 'vue'
-import type { TVacancy } from '@/types/TVacancy';
+import type { TVacancy } from '@/shared/types/TVacancy';
 import { useRouter } from "vue-router";
 
 const props = defineProps({

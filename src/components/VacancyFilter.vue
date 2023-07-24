@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {defineProps, ref, watch} from 'vue';
-import { useVacanciesStore } from '@/store/Vacancies.store';
-import { specialtiesList } from '@/utils/SpecialtiesList';
+import { useVacanciesStore } from '@/shared/store/Vacancies.store';
+import { specialtiesList } from '@/shared/utils/SpecialtiesList';
 
 const props = defineProps({
     isDrawer: Boolean,
